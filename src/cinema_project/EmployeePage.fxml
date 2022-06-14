@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="cinema_project.EmployeePageController">
+   <children>
+      <Label layoutX="240.0" layoutY="32.0" prefHeight="29.0" prefWidth="120.0" text="Welcome !">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField layoutX="277.0" layoutY="128.0" prefHeight="25.0" prefWidth="236.0" />
+      <Label layoutX="91.0" layoutY="129.0" text="User Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="93.0" layoutY="197.0" prefHeight="23.0" prefWidth="92.0" text="Password">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="277.0" layoutY="196.0" prefHeight="25.0" prefWidth="236.0" />
+   </children>
+</AnchorPane>
