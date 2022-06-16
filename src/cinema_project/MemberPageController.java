@@ -5,8 +5,7 @@
  */
 package cinema_project;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
+
 import java.io.IOException;
 import static java.lang.Class.forName;
 import java.net.URL;
