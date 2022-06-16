@@ -28,6 +28,9 @@ import javafx.stage.Stage;
  */
 public class HomePageController implements Initializable {
     
+    
+    @FXML
+    private Button button;
     @FXML
     private RadioButton RadioB1;
     @FXML
@@ -58,15 +61,15 @@ private void handleButtonAction(ActionEvent event) throws IOException {
     
     private void loadScene() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GuestPage.fxml"));
-        Parent root1 =(Parent) loader.load();
+        Parent root =(Parent) loader.load();
         GuestPageController s3Controller = loader.getController(); 
         Stage stage = new Stage();
-        stage.setScene(new Scene(root1));
+        stage.setScene(new Scene(root));
         stage.setTitle("GuestPage");
         stage.show();
     }
    
-    private void loadScene2() throws IOException {
+     private void loadScene2() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("MemberPage.fxml"));
         Parent root =(Parent) loader.load(); 
         MemberPageController s3Controller = loader.getController();
