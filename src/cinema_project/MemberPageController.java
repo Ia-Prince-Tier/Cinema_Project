@@ -29,15 +29,14 @@ import static sun.security.jgss.GSSUtil.login;
  
 public class MemberPageController implements Initializable {
 
-   /*private Button button;
+/*private Button button;
     
  @FXML
  
-private void handleButtonAction(ActionEvent event) throws IOException, ClassNotFoundException {
+private void handleButtonAction(ActionEvent event) throws IOException {
        
-    try {
      
-    Class.forName("com.mysql.jbdc.Driver");
+    /*Class.forName("com.mysql.jbdc.Driver");
     Connection con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:8888/Test","root", "");
     String sql = "Select * from member where Login=? and Password=?";
     PreparedStatement pst = (PreparedStatement) con.prepareStatement(sql);
@@ -80,14 +79,14 @@ private void handleButtonAction(ActionEvent event) throws IOException, ClassNotF
             } catch(SQLException e) {
                  System.out.println(e.getMessage());
 
-            } */            
+            }            
     
-
+*/
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }  
-    /*private void loadScene() throws IOException, ClassNotFoundException, SQLException {
+    /*private void loadScene() throws IOException {
         
     
         FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeMember.fxml"));
@@ -98,6 +97,8 @@ private void handleButtonAction(ActionEvent event) throws IOException, ClassNotF
         stage.setTitle("HomeMember");
         stage.show();
     }
-    }*/
+}*/
+
 
 }
+
