@@ -13,12 +13,12 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <RadioButton fx:id="RadioB1" layoutX="21.0" layoutY="91.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Guest">
+      <RadioButton fx:id="RadioB1" layoutX="21.0" layoutY="91.0" mnemonicParsing="false" text="Guest">
          <toggleGroup>
             <ToggleGroup fx:id="ToggleGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="RadioB2" layoutX="119.0" layoutY="91.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="83.0" text="Member" toggleGroup="$ToggleGroup" />
+      <RadioButton fx:id="RadioB2" layoutX="119.0" layoutY="91.0" mnemonicParsing="false" text="Member" toggleGroup="$ToggleGroup" />
       <RadioButton fx:id="RadioB3" layoutX="222.0" layoutY="91.0" mnemonicParsing="false" text="Employee" toggleGroup="$ToggleGroup" />
       <Button layoutX="113.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="21.0" prefWidth="95.0" text="Confirm" />
     </children>

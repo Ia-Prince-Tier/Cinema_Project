@@ -57,7 +57,6 @@ private void handleButtonAction(ActionEvent event) throws IOException {
     }  
     
     private void loadScene() throws IOException {
-        System.out.println("Test1");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GuestPage.fxml"));
         Parent root1 =(Parent) loader.load();
         GuestPageController s3Controller = loader.getController(); 
