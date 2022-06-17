@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="AnchorPane1" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.MoviesController">
+   <children>
+      <AnchorPane fx:id="AnchorPane2" layoutX="6.0" layoutY="7.0" prefHeight="383.0" prefWidth="586.0">
+         <children>
+            <ImageView fx:id="Imageview1" fitHeight="264.0" fitWidth="200.0" layoutX="372.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <MenuButton fx:id="MenuButton1" layoutX="97.0" layoutY="46.0" mnemonicParsing="false" text="Date">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+            <MenuButton fx:id="MenuButton2" layoutX="97.0" layoutY="93.0" mnemonicParsing="false" text="Time">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+            <ComboBox fx:id="Combo1" layoutX="97.0" layoutY="146.0" prefWidth="150.0" promptText="Date" />
+            <ComboBox fx:id="Combo2" layoutX="97.0" layoutY="185.0" prefWidth="150.0" promptText="Time" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
