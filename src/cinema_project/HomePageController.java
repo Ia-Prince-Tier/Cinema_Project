@@ -60,32 +60,32 @@ private void handleButtonAction(ActionEvent event) throws IOException {
     }  
     
     private void loadScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GuestPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerMoviesPage.fxml"));
         Parent root =(Parent) loader.load();
-        GuestPageController s3Controller = loader.getController(); 
+        CustomerMoviesPageController s3Controller = loader.getController(); 
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.setTitle("GuestPage");
+        stage.setTitle("CustomerMoviesPage");
         stage.show();
     }
    
      private void loadScene2() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MemberPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MemberRegisterPage.fxml"));
         Parent root =(Parent) loader.load(); 
-        MemberPageController s3Controller = loader.getController();
+        MemberRegisterPageController s3Controller = loader.getController();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.setTitle("MemberPage");
+        stage.setTitle("MemberRegisterPage");
         stage.show();
     }
     
      private void loadScene3() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeePage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeeRegisterPage.fxml"));
         Parent root =(Parent) loader.load(); 
-        EmployeePageController s3Controller = loader.getController();
+        EmployeeRegisterPageController s3Controller = loader.getController();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.setTitle("EmployeePage");
+        stage.setTitle("EmployeeRegisterPage");
         stage.show();
     }
 

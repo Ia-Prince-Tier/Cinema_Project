@@ -7,19 +7,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.HomePageController">
+<AnchorPane id="AnchorPane" prefHeight="496.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.HomePageController">
     <children>
-        <Label fx:id="label" layoutX="99.0" layoutY="24.0" minHeight="16" minWidth="69" prefHeight="46.0" prefWidth="124.0" text="Who are you ?" textAlignment="CENTER">
+        <Label fx:id="label" layoutX="218.0" layoutY="80.0" minHeight="16" minWidth="69" prefHeight="46.0" prefWidth="243.0" text="Who are you ?" textAlignment="CENTER">
          <font>
-            <Font size="18.0" />
+            <Font size="36.0" />
          </font></Label>
-      <RadioButton fx:id="RadioB1" layoutX="21.0" layoutY="91.0" mnemonicParsing="false" text="Guest">
+      <RadioButton fx:id="RadioB1" layoutX="62.0" layoutY="212.0" mnemonicParsing="false" text="Guest">
          <toggleGroup>
             <ToggleGroup fx:id="ToggleGroup" />
          </toggleGroup>
+         <font>
+            <Font size="24.0" />
+         </font>
       </RadioButton>
-      <RadioButton fx:id="RadioB2" layoutX="119.0" layoutY="91.0" mnemonicParsing="false" text="Member" toggleGroup="$ToggleGroup" />
-      <RadioButton fx:id="RadioB3" layoutX="222.0" layoutY="91.0" mnemonicParsing="false" text="Employee" toggleGroup="$ToggleGroup" />
-      <Button fx:id="button" layoutX="113.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="21.0" prefWidth="95.0" text="Confirm" />
+      <RadioButton fx:id="RadioB2" layoutX="257.0" layoutY="212.0" mnemonicParsing="false" text="Member" toggleGroup="$ToggleGroup">
+         <font>
+            <Font size="24.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="RadioB3" layoutX="461.0" layoutY="212.0" mnemonicParsing="false" text="Employee" toggleGroup="$ToggleGroup">
+         <font>
+            <Font size="24.0" />
+         </font></RadioButton>
+      <Button fx:id="button" layoutX="230.0" layoutY="384.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="22.0" prefWidth="191.0" text="Confirm">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
     </children>
 </AnchorPane>

@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+ 
 package cinema_project;
 
+
 import java.io.IOException;
+import static java.lang.Class.forName;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,7 +27,7 @@ import javafx.stage.Stage;
  *
  * @author laurentdavenne
  */
-public class EmployeePageController implements Initializable {
+public class MemberRegisterPageController implements Initializable {
 
     @FXML
     private TextField LoginText;
@@ -48,15 +46,15 @@ public class EmployeePageController implements Initializable {
         
             try {
  
-                String url       = "jdbc:mysql://localhost:8889/Test";
-                String Login      = "root";
+                String url       = "jdbc:mysql://localhost:8889/cinema_project";
+                String User      = "root";
                 String Password  = "root";
                 
-                Connection conn = DriverManager.getConnection(url, Login, Password);
+                Connection conn = DriverManager.getConnection(url, User, Password);
 
                 Statement stmt=conn.createStatement(); 
     
-                ResultSet rs=stmt.executeQuery("select * from Member Where Login='"+LoginText.getText()+"' And Password='"+PasswordText.getText()+"'");
+                ResultSet rs=stmt.executeQuery("select * from Member Where USER='"+LoginText.getText()+"' And PASSWORD='"+PasswordText.getText()+"'");
                 if(rs.next()) {
                     loadScene();
                     }else{
@@ -65,22 +63,24 @@ public class EmployeePageController implements Initializable {
             } catch(SQLException e) {
                  System.out.println(e.getMessage());
             } 
-    }   
-    
+    }  
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
     
         private void loadScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeMember.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomerMoviesPage.fxml"));
         Parent root1 =(Parent) loader.load();
-        HomeMemberController s3Controller = loader.getController(); 
+        CustomerMoviesPageController s3Controller = loader.getController(); 
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));
-        stage.setTitle("HomeMember");
+        stage.setTitle("CustomerMoviesPage");
         stage.show();
     }
+
+
     
     
 }

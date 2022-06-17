@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="cinema_project.EmployeePageController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.EmployeeRegisterPageController">
    <children>
       <Label layoutX="240.0" layoutY="32.0" prefHeight="29.0" prefWidth="120.0" text="Welcome !">
          <font>
@@ -33,5 +32,6 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Label fx:id="IncorrectLabel" layoutX="182.0" layoutY="265.0" text="Incorrect password or login. Please try again." textFill="#e40707" visible="false" />
    </children>
 </AnchorPane>

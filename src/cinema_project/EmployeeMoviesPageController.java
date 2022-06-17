@@ -7,18 +7,24 @@ package cinema_project;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
  *
  * @author laurentdavenne
  */
-public class GuestPageController implements Initializable {
+public class EmployeeMoviesPageController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private Label label;
+    
+    public void setEmployeeName(String nameEmployee){
+        label.setText(nameEmployee);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
