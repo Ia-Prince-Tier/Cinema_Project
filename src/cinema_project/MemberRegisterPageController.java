@@ -42,6 +42,9 @@ public class MemberRegisterPageController implements Initializable {
     private Button button;
     
     @FXML
+    private Button button1;
+    
+    @FXML
     private void handleButtonAction(ActionEvent event) throws IOException, SQLException {
         
             try {
@@ -56,6 +59,7 @@ public class MemberRegisterPageController implements Initializable {
     
                 ResultSet rs=stmt.executeQuery("select * from Member Where USER='"+LoginText.getText()+"' And PASSWORD='"+PasswordText.getText()+"'");
                 if(rs.next()) {
+                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
                     loadScene();
                     }else{
                     IncorrectLabel.setVisible(true);
@@ -65,6 +69,13 @@ public class MemberRegisterPageController implements Initializable {
             } 
     }  
 
+    @FXML
+    private void handleButtonAction2(ActionEvent event) throws IOException {
+    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    loadScene2();
+    }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -79,6 +90,17 @@ public class MemberRegisterPageController implements Initializable {
         stage.setTitle("CustomerMoviesPage");
         stage.show();
     }
+            
+        private void loadScene2() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+        Parent root1 =(Parent) loader.load();
+        HomePageController s3Controller = loader.getController();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.setTitle("HomePage");
+        stage.show();
+        
+        }
 
 
     

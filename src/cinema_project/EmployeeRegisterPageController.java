@@ -23,6 +23,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 
 /**
  * FXML Controller class
@@ -44,9 +47,13 @@ public class EmployeeRegisterPageController implements Initializable {
     private Button button;
     
     @FXML
+    private Button button1;
+    
+    @FXML
     private void handleButtonAction(ActionEvent event) throws IOException, SQLException {
         
-            try {
+
+                try {
  
                 String url       = "jdbc:mysql://localhost:8889/cinema_project";
                 String User      = "root";
@@ -57,33 +64,49 @@ public class EmployeeRegisterPageController implements Initializable {
                 Statement stmt=conn.createStatement(); 
     
                 ResultSet rs=stmt.executeQuery("select * from Employee Where USER='"+LoginText.getText()+"' And PASSWORD='"+PasswordText.getText()+"'");
-                if(rs.next()) {
-                    loadScene();
+                    if(rs.next()) {
+                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+                    loadScene1();
                     }else{
                     IncorrectLabel.setVisible(true);
                     }
-            } catch(SQLException e) {
+                } catch(SQLException e) {
                  System.out.println(e.getMessage());
-            } 
+                } 
+ 
     }   
+    
+    @FXML
+    private void handleButtonAction2(ActionEvent event) throws IOException {
+    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    loadScene2();
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
     
-        private void loadScene() throws IOException {
+        private void loadScene1() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeeMoviesPage.fxml"));
         Parent root1 =(Parent) loader.load();
         EmployeeMoviesPageController s3Controller = loader.getController();
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));
         stage.setTitle("EmployeeMoviesPage");
-        s3Controller.setEmployeeName(LoginText.getText());
-        System.out.println(LoginText.getText());
+        s3Controller.setEmployeeName("Bonjour " + LoginText.getText());
         stage.show();
         
-    }
+        }
     
-    
+        private void loadScene2() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+        Parent root1 =(Parent) loader.load();
+        HomePageController s3Controller = loader.getController();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.setTitle("HomePage");
+        stage.show();
+        
+        }
 }

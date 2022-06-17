@@ -6,6 +6,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.EmployeeMoviesPageController">
    <children>
-      <Label fx:id="label" layoutX="83.0" layoutY="36.0" prefHeight="17.0" prefWidth="52.0" text="Label" />
+      <Label fx:id="label" layoutX="235.0" layoutY="28.0" prefHeight="17.0" prefWidth="131.0" text="Bonjour User" />
    </children>
 </AnchorPane>
