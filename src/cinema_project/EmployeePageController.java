@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -37,6 +38,9 @@ public class EmployeePageController implements Initializable {
     private TextField PasswordText;
     
     @FXML
+    private Label IncorrectLabel;
+    
+    @FXML
     private Button button;
     
     @FXML
@@ -51,34 +55,17 @@ public class EmployeePageController implements Initializable {
                 Connection conn = DriverManager.getConnection(url, Login, Password);
 
                 Statement stmt=conn.createStatement(); 
-                //ResultSet rs=stmt.executeQuery("select count(1) from Member Where Login= '" + LoginText.getText() + "' And Password = '" + PasswordText.getText());
-                ResultSet rs=stmt.executeQuery("select * from Member");
-                while(rs.next()) {
-                System.out.println(rs.getString(2)+"  "+rs.getString(3));
-                }
-                /* if(rs.next()){
+    
+                ResultSet rs=stmt.executeQuery("select * from Member Where Login='"+LoginText.getText()+"' And Password='"+PasswordText.getText()+"'");
+                if(rs.next()) {
                     loadScene();
                     }else{
-                    System.exit(0);
-                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-                    System.out.println("Login or Password Error");
-                    } 
-                    System.out.println(rs.getInt(1));*/
-
-                /*while(rs.next()){
-                    if(LoginText.getText().equals(rs.getString(2)) && PasswordText.getText().equals(rs.getString(3))){
-                    loadScene();
-                    }else{
-                    System.exit(0);
-                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+                    IncorrectLabel.setVisible(true);
                     }
-                }*/
             } catch(SQLException e) {
                  System.out.println(e.getMessage());
             } 
     }   
-         
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
