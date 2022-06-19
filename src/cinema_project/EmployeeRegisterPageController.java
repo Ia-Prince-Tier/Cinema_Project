@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.PasswordField;
 
 /**
  * FXML Controller class
@@ -38,7 +39,7 @@ public class EmployeeRegisterPageController implements Initializable {
     private TextField LoginText;
 
     @FXML
-    private TextField PasswordText;
+    private PasswordField PasswordText;
     
     @FXML
     private Label IncorrectLabel;
@@ -94,7 +95,7 @@ public class EmployeeRegisterPageController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));
         stage.setTitle("EmployeeMoviesPage");
-        s3Controller.setEmployeeName("Bonjour " + LoginText.getText());
+        s3Controller.setEmployeeName("Bonjour " + LoginText.getText() + "!");
         stage.show();
         
         }

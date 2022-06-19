@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -33,7 +34,7 @@ public class MemberRegisterPageController implements Initializable {
     private TextField LoginText;
 
     @FXML
-    private TextField PasswordText;
+    private PasswordField PasswordText;
     
     @FXML
     private Label IncorrectLabel;
