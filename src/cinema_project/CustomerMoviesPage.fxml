@@ -1,8 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="cinema_project.CustomerMoviesPageController">
-    
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.CustomerMoviesPageController">
+   <children>
+      <ImageView fx:id="imageview1" fitHeight="241.0" fitWidth="203.0" layoutX="238.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Desktop/PHOTOS/Capture%20d’écran%202022-01-09%20à%2001.26.20.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="Combo1" layoutX="35.0" layoutY="27.0" prefHeight="25.0" prefWidth="175.0" promptText="Broadcast days" />
+      <ComboBox fx:id="Combo2" layoutX="35.0" layoutY="115.0" prefHeight="25.0" prefWidth="175.0" promptText="Broadcast time" />
+      <Label fx:id="Label1" layoutX="452.0" layoutY="27.0" prefHeight="17.0" prefWidth="134.0" text="Title" textAlignment="CENTER" />
+      <Label fx:id="Label2" layoutX="452.0" layoutY="132.0" prefHeight="17.0" prefWidth="134.0" text="Duration" textAlignment="CENTER" />
+      <Label fx:id="Label3" layoutX="452.0" layoutY="237.0" prefHeight="17.0" prefWidth="134.0" text="Genre" textAlignment="CENTER" />
+      <Button fx:id="button3" layoutX="433.0" layoutY="353.0" mnemonicParsing="false" onAction="#hundleButtonAction3" prefHeight="25.0" prefWidth="153.0" text="Back" />
+      <Button fx:id="button2" layoutX="35.0" layoutY="353.0" mnemonicParsing="false" onAction="#hundleButtonAction2" prefHeight="25.0" prefWidth="175.0" text="Go to the next movie" />
+      <Button fx:id="button1" layoutX="35.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonAction1" prefHeight="45.0" prefWidth="175.0" text="Book">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label fx:id="Label5" layoutX="8.0" layoutY="6.0" prefHeight="17.0" prefWidth="53.0" text="Hello !" />
+      <Label fx:id="Label4" layoutX="238.0" layoutY="275.0" prefHeight="67.0" prefWidth="344.0" text="Synopsis" />
+      <TextField fx:id="TextField1" layoutX="35.0" layoutY="233.0" prefHeight="25.0" prefWidth="175.0" />
+      <Label fx:id="Label7" layoutX="35.0" layoutY="267.0" prefHeight="17.0" prefWidth="175.0" text="error" />
+      <Label fx:id="Label6" layoutX="35.0" layoutY="207.0" prefHeight="17.0" prefWidth="175.0" text="How many tickets ?" textAlignment="CENTER" />
+   </children>
 </AnchorPane>

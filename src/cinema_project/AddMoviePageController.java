@@ -54,6 +54,15 @@ public class AddMoviePageController implements Initializable {
     @FXML
     private Label IncorrectLabel3;
     
+    public boolean isStringInt(String s){
+        try{
+            Integer.parseInt(s);
+            return true;
+        }catch(NumberFormatException ex){
+            return false;
+        }
+    }
+    
     @FXML
     void hundleButtonAction1(ActionEvent event) throws IOException {
     ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
@@ -70,7 +79,7 @@ public class AddMoviePageController implements Initializable {
                 
                 try{
  
-                String url       = "jdbc:mysql://localhost:8889/cinema_project";
+                String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
                 String User      = "root";
                 String Password  = "root";
                 

@@ -58,7 +58,7 @@ public class DeleteMoviePageController implements Initializable {
         
                 try {
  
-                String url       = "jdbc:mysql://localhost:8889/cinema_project";
+                String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
                 String User      = "root";
                 String Password  = "root";
                 
