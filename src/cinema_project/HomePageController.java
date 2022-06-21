@@ -7,6 +7,11 @@ package cinema_project;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,6 +71,31 @@ private void handleButtonAction(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle("CustomerMoviesPage");
+        
+        try {
+ 
+                String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
+                String User      = "root";
+                String Password  = "root";
+                
+                Connection conn = DriverManager.getConnection(url, User, Password);
+
+                Statement stmt=conn.createStatement(); 
+    
+                ResultSet rs1=stmt.executeQuery("select Title, Duration, Genre, Synopsis from movies where ID=1");
+                
+                    while(rs1.next()) {
+                        s3Controller.setTitle(rs1.getString(1));
+                        s3Controller.setDuration("Duration : " + rs1.getString(2) + " min.");
+                        s3Controller.setGenre("Genre : " + rs1.getString(3));
+                        s3Controller.setSynopsis("Synopsis : " + rs1.getString(4));
+                        
+                        
+                    }
+                    
+        } catch(SQLException e) {
+           System.out.println(e.getMessage());
+        } 
         stage.show();
     }
    

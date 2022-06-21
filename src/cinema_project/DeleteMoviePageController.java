@@ -5,6 +5,7 @@
  */
 package cinema_project;
 
+import com.mysql.cj.protocol.Resultset;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -56,6 +57,8 @@ public class DeleteMoviePageController implements Initializable {
     @FXML
     void hundleButtonAction2(ActionEvent event) throws IOException, SQLException{
         
+        int lastid;
+        
                 try {
  
                 String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
@@ -71,8 +74,20 @@ public class DeleteMoviePageController implements Initializable {
                     if (rs==0){
                     noMovieText.setVisible(true);
                     }else{
-                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-                    loadScene2();
+                        System.out.println("Bonjour");
+                    int rs2=stmt.executeUpdate("set @autoid :=0 ");
+                        if(rs2==0){
+                            System.out.println("Bonjour");
+                            int rs3=stmt.executeUpdate("Update movies SET ID = @autoid := (@autoid+1) ");
+                            if(rs3==1){
+                            ResultSet rs4=stmt.executeQuery("Alter table movies AUTO_INCREMENT=1");
+                                if(rs4.next()){
+                                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+                    loadScene2();  
+                                }
+                            }
+                        }
+                     
                     }
 
                 } catch(SQLException e) {

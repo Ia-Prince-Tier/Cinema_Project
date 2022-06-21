@@ -6,58 +6,57 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="cinema_project.UpdateMoviePageController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.UpdateMoviePageController">
    <children>
-      <Label layoutX="72.0" layoutY="24.0" prefHeight="27.0" prefWidth="456.0" text="Enter the information of the movie you want to modify" textFill="#4916d7">
+      <Label fx:id="Label1" layoutX="92.0" layoutY="114.0" prefHeight="27.0" prefWidth="416.0" text="Then, please modify the information of this movie" textFill="#4916d7" visible="false">
          <font>
             <Font name="Kohinoor Telugu" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="TextField1" layoutX="315.0" layoutY="86.0" prefHeight="25.0" prefWidth="212.0" />
-      <TextField fx:id="TextField2" layoutX="315.0" layoutY="151.0" prefHeight="25.0" prefWidth="212.0" />
-      <TextField fx:id="TextField3" layoutX="315.0" layoutY="219.0" prefHeight="25.0" prefWidth="212.0" />
-      <TextField fx:id="TextField4" layoutX="315.0" layoutY="287.0" prefHeight="25.0" prefWidth="212.0" />
-      <Label layoutX="141.0" layoutY="87.0" prefHeight="23.0" prefWidth="67.0" text="ID Movie" textFill="#176519">
+      <TextField fx:id="TextField1" layoutX="103.0" layoutY="54.0" prefHeight="25.0" prefWidth="275.0" />
+      <TextField fx:id="TextField2" layoutX="315.0" layoutY="164.0" prefHeight="25.0" prefWidth="212.0" visible="false" />
+      <TextField fx:id="TextField3" layoutX="315.0" layoutY="231.0" prefHeight="25.0" prefWidth="212.0" visible="false" />
+      <TextField fx:id="TextField4" layoutX="315.0" layoutY="300.0" prefHeight="25.0" prefWidth="212.0" visible="false" />
+      <Label layoutX="27.0" layoutY="14.0" prefHeight="27.0" prefWidth="547.0" text="First of all, please enter the title of the movie you want to modify " textFill="#4916d7">
+         <font>
+            <Font name="Kohinoor Telugu" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="Label2" layoutX="123.0" layoutY="165.0" text="New Title Movie" textFill="#176519" visible="false">
          <font>
             <Font name="Kohinoor Telugu" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="137.0" layoutY="152.0" text="Title Movie" textFill="#176519">
+      <Label fx:id="Label3" layoutX="106.0" layoutY="232.0" prefHeight="23.0" prefWidth="145.0" text="New Duration Movie" textFill="#176519" visible="false">
          <font>
             <Font name="Kohinoor Telugu" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="122.0" layoutY="220.0" text="Duration Movie" textFill="#176519">
+      <Label fx:id="Label4" layoutX="116.0" layoutY="301.0" prefHeight="23.0" prefWidth="124.0" text="New Genre Movie" textFill="#176519" visible="false">
          <font>
             <Font name="Kohinoor Telugu" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="132.0" layoutY="288.0" text="Genre Movie" textFill="#176519">
-         <font>
-            <Font name="Kohinoor Telugu" size="15.0" />
-         </font>
-      </Label>
-      <Button fx:id="button2" layoutX="264.0" layoutY="336.0" mnemonicParsing="false" onAction="#hundleButtonAction2" prefHeight="35.0" prefWidth="92.0" text="Confirm">
+      <Button fx:id="button2" layoutX="255.0" layoutY="346.0" mnemonicParsing="false" onAction="#hundleButtonAction2" prefHeight="35.0" prefWidth="92.0" text="Confirm" visible="false">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="button1" layoutX="540.0" layoutY="359.0" mnemonicParsing="false" onAction="#hundleButtonAction1" text="Back" />
-      <Button fx:id="IncorrectLabel1" layoutX="122.0" layoutY="118.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="404.0" text="Please enter a 3 character ID that is not already taken." textFill="#eb0f0f" visible="false">
+      <Button fx:id="button3" layoutX="494.0" layoutY="346.0" mnemonicParsing="false" onAction="#hundleButtonAction3" prefHeight="35.0" prefWidth="92.0" text="Back" visible="false">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Label fx:id="IncorrectLabel1" layoutX="163.0" layoutY="91.0" prefHeight="17.0" prefWidth="285.0" text="There are no movies that match your request." textFill="#eb0f0f" visible="false">
          <font>
             <Font name="Kohinoor Telugu" size="13.0" />
          </font>
-      </Button>
-      <Button fx:id="IncorrectLabel2" layoutX="104.0" layoutY="252.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="422.0" text="Please enter the duration of the film in minutes." textFill="#eb0f0f" visible="false">
+      </Label>
+      <Label fx:id="IncorrectLabel3" layoutX="12.0" layoutY="363.0" prefHeight="17.0" prefWidth="161.0" text="All fields must be filled in." textFill="#eb0f0f" visible="false" />
+      <Button fx:id="button1" layoutX="409.0" layoutY="53.0" mnemonicParsing="false" onAction="#hundleButtonAction1" prefHeight="27.0" prefWidth="78.0" text="Confirm" />
+      <Label fx:id="IncorrectLabel2" layoutX="276.0" layoutY="272.0" text="Please enter the duration of the film in minutes." textFill="#eb0f0f" visible="false">
          <font>
             <Font name="Kohinoor Telugu" size="13.0" />
          </font>
-      </Button>
-      <Button fx:id="IncorrectLabel3" layoutX="16.0" layoutY="359.0" mnemonicParsing="false" text="All fields must be filled in." textFill="#eb0f0f" visible="false">
-         <font>
-            <Font name="Kohinoor Telugu" size="13.0" />
-         </font>
-      </Button>
+      </Label>
    </children>
 </AnchorPane>

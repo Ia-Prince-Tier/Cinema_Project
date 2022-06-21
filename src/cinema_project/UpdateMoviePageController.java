@@ -20,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import static jdk.nashorn.internal.objects.ArrayBufferView.length;
@@ -33,6 +34,27 @@ public class UpdateMoviePageController implements Initializable {
 
 
     
+ @FXML
+    private Label IncorrectLabel1;
+
+    @FXML
+    private Label IncorrectLabel2;
+
+    @FXML
+    private Label IncorrectLabel3;
+
+    @FXML
+    private Label Label1;
+
+    @FXML
+    private Label Label2;
+
+    @FXML
+    private Label Label3;
+
+    @FXML
+    private Label Label4;
+
     @FXML
     private TextField TextField1;
 
@@ -44,16 +66,6 @@ public class UpdateMoviePageController implements Initializable {
 
     @FXML
     private TextField TextField4;
-   
-    @FXML
-    private Button IncorrectLabel2;
-
-    @FXML
-    private Button IncorrectLabel1;
-    
-    @FXML
-    private Button IncorrectLabel3;
-
 
     @FXML
     private Button button1;
@@ -62,10 +74,8 @@ public class UpdateMoviePageController implements Initializable {
     private Button button2;
 
     @FXML
-    void hundleButtonAction1(ActionEvent event) throws IOException {
-    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-    loadScene1();
-    }
+    private Button button3;
+
     
     public boolean isStringInt(String s){
         try{
@@ -76,14 +86,52 @@ public class UpdateMoviePageController implements Initializable {
         }
     }
 
+    
+    @FXML
+    void hundleButtonAction1(ActionEvent event) {
+        
+        IncorrectLabel1.setVisible(false);
+        
+        try {
+ 
+                String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
+                String User      = "root";
+                String Password  = "root";
+                
+                Connection conn = DriverManager.getConnection(url, User, Password);
+
+                Statement stmt=conn.createStatement(); 
+    
+                ResultSet rs=stmt.executeQuery("select * from movies Where Title='"+TextField1.getText()+"'");
+                
+                    if (rs.next()){
+                    
+                    Label1.setVisible(true);
+                    Label2.setVisible(true);
+                    Label3.setVisible(true);
+                    Label4.setVisible(true);
+                    TextField2.setVisible(true);
+                    TextField3.setVisible(true);
+                    TextField4.setVisible(true);
+                    button2.setVisible(true);
+                    button3.setVisible(true);
+                    
+                    }else{
+                    IncorrectLabel1.setVisible(true);
+                    }
+
+                } catch(SQLException e) {
+                 System.out.println(e.getMessage());
+                } 
+    }
+
     @FXML
     void hundleButtonAction2(ActionEvent event) throws IOException {
 
-            IncorrectLabel1.setVisible(false);
             IncorrectLabel2.setVisible(false);
             IncorrectLabel3.setVisible(false);
             
-            if(TextField1.getText().equals("") || TextField2.getText().equals("") || TextField3.getText().equals("") || TextField4.getText().equals("")){
+            if(TextField2.getText().equals("") || TextField3.getText().equals("") || TextField4.getText().equals("")){
  
                     IncorrectLabel3.setVisible(true);
                     
@@ -103,10 +151,11 @@ public class UpdateMoviePageController implements Initializable {
 
                                 Statement stmt=conn.createStatement(); 
                     
-                                int rs=stmt.executeUpdate("UPDATE movies SET ID='"+TextField1.getText()+"', Title='"+TextField2.getText()+"', Duration='"+TextField3.getText()+"', Genre='"+TextField4.getText()+"' where ID='"+TextField1.getText()+"' ");
+                                int rs=stmt.executeUpdate("UPDATE movies SET Title='"+TextField2.getText()+"', Duration='"+TextField3.getText()+"', Genre='"+TextField4.getText()+"' where Title='"+TextField1.getText()+"' ");
                             
                                 if(rs==0){
                                 
+                                IncorrectLabel1.setVisible(true);
                                 IncorrectLabel1.setVisible(true);
                                 
                                 }else{
@@ -125,7 +174,14 @@ public class UpdateMoviePageController implements Initializable {
                   
             }    
          
-   }
+    }
+
+    @FXML
+    void hundleButtonAction3(ActionEvent event) throws IOException {
+    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    loadScene1();
+    }
+   
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -36,7 +38,7 @@ import javafx.stage.Stage;
  */
 public class CustomerMoviesPageController implements Initializable {
 
-
+    public int x;
     @FXML
     private ComboBox<?> Combo1;
 
@@ -53,9 +55,6 @@ public class CustomerMoviesPageController implements Initializable {
     private Label Label3;
 
     @FXML
-    private Label Label4;
-
-    @FXML
     private Label Label5;
 
     @FXML
@@ -63,6 +62,9 @@ public class CustomerMoviesPageController implements Initializable {
 
     @FXML
     private Label Label7;
+    
+    @FXML
+    private TextArea TextArea1;
 
     @FXML
     private TextField TextField1;
@@ -79,16 +81,85 @@ public class CustomerMoviesPageController implements Initializable {
     @FXML
     private ImageView imageview1;
     
-   
-
+    public void setTitle(String nameTitle){
+        Label1.setText(nameTitle);
+    }
+    
+    public void setDuration(String duration){
+        Label2.setText(duration);
+    }
+    
+    public void setGenre(String genre){
+        Label3.setText(genre);
+    }
+    
+    public void setSynopsis(String synopsis){
+        TextArea1.setText(synopsis);
+    }
+    
+    
     @FXML
     void handleButtonAction1(ActionEvent event) {
-
     }
+
 
     @FXML
     void hundleButtonAction2(ActionEvent event) {
+        int x;        
+            try {
+ 
+                String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
+                String User      = "root";
+                String Password  = "root";
+                
+                Connection conn = DriverManager.getConnection(url, User, Password);
 
+                Statement stmt=conn.createStatement(); 
+                
+                ResultSet rs1=stmt.executeQuery("SELECT count(*) from movies");
+                
+                if(rs1.next()){
+                
+                    x=rs1.getInt(1);
+                    ResultSet rs2=stmt.executeQuery("SELECT ID from movies where Title='"+Label1.getText()+"' ");
+
+                    if(rs2.next()){ 
+                        
+                        if(rs2.getInt(1)==x){
+                    
+                        ResultSet rs3=stmt.executeQuery("select Title, Duration, Genre, Synopsis from movies where ID=1 ");
+                
+                            if(rs3.next()){
+
+                            setTitle(rs3.getString(1));
+                            setDuration("Duration : " + rs3.getString(2) + " min.");
+                            setGenre("Genre : " + rs3.getString(3));
+                            setSynopsis("Synopsis : " + rs3.getString(4));
+                            System.out.println(rs3.getInt(1));
+                            
+                            }
+                            
+                        }else{
+                            
+                        ResultSet rs3=stmt.executeQuery("select Title, Duration, Genre, Synopsis from movies where ID='"+(rs2.getInt(1)+1)+"' ");
+                        
+                            if(rs3.next()){
+                    
+                            setTitle(rs3.getString(1));
+                            setDuration("Duration : " + rs3.getString(2) + " min.");
+                            setGenre("Genre : " + rs3.getString(3));
+                            setSynopsis("Synopsis : " + rs3.getString(4));
+                            System.out.println(rs3.getInt(1));
+                
+                            }    
+                        }
+                    }
+                }
+             
+                    
+            } catch(SQLException e) {
+                System.out.println(e.getMessage());
+            } 
     }
 
     @FXML
@@ -97,7 +168,8 @@ public class CustomerMoviesPageController implements Initializable {
     loadScene1();
     }
     
-    ObservableList DatesList = FXCollections.observableArrayList();
+    /*ObservableList<String> Dateslist = new SortedList<String>();
+
 
        String url       = "jdbc:mysql://localhost:3306/cinema_project_1";
        String user      = "root";
@@ -117,8 +189,10 @@ public class CustomerMoviesPageController implements Initializable {
 
                 Statement stmt=conn.createStatement(); 
                 ResultSet rs=stmt.executeQuery("select Date from screensession"); 
-                while(rs.next()) 
+                while(rs.next()){
+                System.out.println(rs.getString(1));
                 DatesList.add(rs.getString(1)); 
+                }
 
             } catch(SQLException e) {
                 System.out.println(e.getMessage());
@@ -130,12 +204,14 @@ public class CustomerMoviesPageController implements Initializable {
                     System.out.println(ex.getMessage());
                 }
         }
-    }
+    }*/
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       //SQLDate();
        //Combo1.setItems(DatesList);
-       imageview1.setImage(new Image("image1.png"));
+    
+       //imageview1.setImage(new Image("image1.png"));
     }    
     
     private void loadScene1() throws IOException {

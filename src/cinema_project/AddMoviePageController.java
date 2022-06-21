@@ -27,8 +27,6 @@ import javafx.stage.Stage;
 
 public class AddMoviePageController implements Initializable {
 
-    @FXML
-    private TextField TextField1;
 
     @FXML
     private TextField TextField2;
@@ -38,6 +36,9 @@ public class AddMoviePageController implements Initializable {
 
     @FXML
     private TextField TextField4;
+    
+    @FXML
+    private TextField TextField5;
 
     @FXML
     private Button button1;
@@ -72,41 +73,42 @@ public class AddMoviePageController implements Initializable {
     @FXML
     void hundleButtonAction2(ActionEvent event) throws IOException {
         
-            if(TextField2.getText().equals("") || TextField4.getText().equals("")){
+        IncorrectLabel2.setVisible(false);
+        IncorrectLabel3.setVisible(false);
+        
+            if(TextField2.getText().equals("") || TextField4.getText().equals("") || TextField4.getText().equals("") || TextField5.getText().equals("")){
                 
                 IncorrectLabel3.setVisible(true);
+                
             }else{
+                    
+                if(isStringInt(TextField3.getText())==false){
+                    IncorrectLabel2.setVisible(true);   
                 
-                try{
+                }else{
+                
+                    try{
  
-                String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
-                String User      = "root";
-                String Password  = "root";
+                    String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
+                    String User      = "root";
+                    String Password  = "root";
                 
-                Connection conn = DriverManager.getConnection(url, User, Password);
+                    Connection conn = DriverManager.getConnection(url, User, Password);
 
-                Statement stmt=conn.createStatement(); 
+                    Statement stmt=conn.createStatement(); 
    
-                int rs=stmt.executeUpdate("INSERT INTO movies (ID, Title, Duration, Genre) VALUES ('"+TextField1.getText()+"', '"+TextField2.getText()+"', '"+TextField3.getText()+"', '"+TextField4.getText()+"')");;
+                    int rs=stmt.executeUpdate("INSERT INTO movies (Title, Duration, Genre, Synopsis) VALUES ('"+TextField2.getText()+"', '"+TextField3.getText()+"', '"+TextField4.getText()+"', '"+TextField5.getText()+"')");;
                             
-                    if(rs==0){
-                                
-                    IncorrectLabel1.setVisible(true);
-                    IncorrectLabel2.setVisible(true);
-                                
-                    }else{
+
                     ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
                     loadScene2();
-                    }
                     
-              
-                } catch(SQLException e) {
-                    System.out.println(e.getMessage());
-                    IncorrectLabel1.setVisible(true);
-                    IncorrectLabel2.setVisible(true);
                     
-                } 
-
+                    } catch(SQLException e) {
+                        System.out.println(e.getMessage());
+                   
+                    } 
+                }
             }           
     }
     

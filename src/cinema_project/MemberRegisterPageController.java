@@ -58,7 +58,7 @@ public class MemberRegisterPageController implements Initializable {
 
                 Statement stmt=conn.createStatement(); 
     
-                ResultSet rs=stmt.executeQuery("select * from Member Where USER='"+LoginText.getText()+"' And PASSWORD='"+PasswordText.getText()+"'");
+                ResultSet rs=stmt.executeQuery("select * from member Where USER='"+LoginText.getText()+"' And PASSWORD='"+PasswordText.getText()+"'");
                 if(rs.next()) {
                     ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
                     loadScene();
