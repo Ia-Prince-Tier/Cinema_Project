@@ -97,7 +97,13 @@ public class CustomerMoviesPageController implements Initializable {
         TextArea1.setText(synopsis);
     }
     
+    Image myimage = new Image(getClass().getResourceAsStream("image1.png"));
     
+    public void DisplayImage(){
+     imageview1.setImage(myimage);   
+    }
+    
+   
     @FXML
     void handleButtonAction1(ActionEvent event) {
     }
@@ -127,7 +133,7 @@ public class CustomerMoviesPageController implements Initializable {
                         
                         if(rs2.getInt(1)==x){
                     
-                        ResultSet rs3=stmt.executeQuery("select Title, Duration, Genre, Synopsis from movies where ID=1 ");
+                        ResultSet rs3=stmt.executeQuery("select Title, Duration, Genre, Synopsis from movies where ID=3 ");
                 
                             if(rs3.next()){
 

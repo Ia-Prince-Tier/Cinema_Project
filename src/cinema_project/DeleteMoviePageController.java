@@ -71,24 +71,19 @@ public class DeleteMoviePageController implements Initializable {
     
                 int rs=stmt.executeUpdate("delete from movies Where Title='"+movieTextField.getText()+"'");
                 
+                stmt.executeUpdate("SET @autoid := 0");
+                stmt.executeUpdate("UPDATE movies SET ID = @autoid := (@autoid+1)");
+                stmt.executeUpdate("ALTER TABLE movies AUTO_INCREMENT = 1");
+                    
                     if (rs==0){
                     noMovieText.setVisible(true);
                     }else{
-                        System.out.println("Bonjour");
-                    int rs2=stmt.executeUpdate("set @autoid :=0 ");
-                        if(rs2==0){
-                            System.out.println("Bonjour");
-                            int rs3=stmt.executeUpdate("Update movies SET ID = @autoid := (@autoid+1) ");
-                            if(rs3==1){
-                            ResultSet rs4=stmt.executeQuery("Alter table movies AUTO_INCREMENT=1");
-                                if(rs4.next()){
-                                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+                        
+    
+                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
                     loadScene2();  
-                                }
-                            }
-                        }
-                     
-                    }
+                        }       
+                            
 
                 } catch(SQLException e) {
                  System.out.println(e.getMessage());
