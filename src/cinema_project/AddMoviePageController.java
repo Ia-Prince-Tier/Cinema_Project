@@ -97,7 +97,7 @@ public class AddMoviePageController implements Initializable {
 
                     Statement stmt=conn.createStatement(); 
    
-                    int rs=stmt.executeUpdate("INSERT INTO movies (Title, Duration, Genre, Synopsis) VALUES ('"+TextField2.getText()+"', '"+TextField3.getText()+"', '"+TextField4.getText()+"', '"+TextField5.getText()+"')");;
+                    int rs=stmt.executeUpdate("INSERT INTO movies (Title, Duration, Genre, Synopsis) VALUES ('"+TextField2.getText()+"', '"+TextField3.getText()+"', '"+TextField4.getText()+"', '"+TextField5.getText()+"')");
                             
 
                     ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();

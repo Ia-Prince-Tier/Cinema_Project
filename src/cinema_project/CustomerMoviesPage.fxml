@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.CustomerMoviesPageController">
    <children>
       <ImageView fx:id="imageview1" fitHeight="241.0" fitWidth="203.0" layoutX="221.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
@@ -32,12 +31,13 @@
       </Button>
       <Label fx:id="Label5" layoutX="8.0" layoutY="6.0" prefHeight="17.0" prefWidth="53.0" text="Hello !" />
       <TextField fx:id="TextField1" layoutX="35.0" layoutY="233.0" prefHeight="25.0" prefWidth="175.0" />
-      <Label fx:id="Label7" layoutX="35.0" layoutY="267.0" prefHeight="17.0" prefWidth="175.0" text="error" />
+      <Label fx:id="IncorrectLabel1" layoutX="25.0" layoutY="267.0" prefHeight="17.0" prefWidth="38.0" text="error" visible="false" />
       <Label fx:id="Label6" layoutX="35.0" layoutY="207.0" prefHeight="17.0" prefWidth="175.0" text="How many tickets ?" textAlignment="CENTER" />
       <TextArea fx:id="TextArea1" editable="false" layoutX="218.0" layoutY="267.0" prefHeight="76.0" prefWidth="368.0" wrapText="true">
          <font>
             <Font size="9.0" />
          </font>
       </TextArea>
+      <Label fx:id="IncorrectLabel2" layoutX="123.0" layoutY="267.0" text="error2" visible="false" />
    </children>
 </AnchorPane>

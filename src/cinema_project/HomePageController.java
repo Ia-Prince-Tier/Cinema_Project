@@ -82,7 +82,7 @@ private void handleButtonAction(ActionEvent event) throws IOException {
 
                 Statement stmt=conn.createStatement(); 
     
-                ResultSet rs1=stmt.executeQuery("select Title, Duration, Genre, Synopsis from movies where ID=3");
+                ResultSet rs1=stmt.executeQuery("select Title, Duration, Genre, Synopsis from movies where ID=1");
                 
                     while(rs1.next()) {
                         s3Controller.setTitle(rs1.getString(1));

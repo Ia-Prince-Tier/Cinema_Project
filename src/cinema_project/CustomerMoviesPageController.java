@@ -5,6 +5,7 @@
  */
 package cinema_project;
 
+import com.mysql.cj.protocol.Resultset;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -40,10 +41,10 @@ public class CustomerMoviesPageController implements Initializable {
 
     public int x;
     @FXML
-    private ComboBox<?> Combo1;
+    private ComboBox<String> Combo1;
 
     @FXML
-    private ComboBox<?> Combo2;
+    private ComboBox<String> Combo2;
 
     @FXML
     private Label Label1;
@@ -61,7 +62,10 @@ public class CustomerMoviesPageController implements Initializable {
     private Label Label6;
 
     @FXML
-    private Label Label7;
+    private Label IncorrectLabel1;
+    
+    @FXML
+    private Label IncorrectLabel2;
     
     @FXML
     private TextArea TextArea1;
@@ -97,15 +101,85 @@ public class CustomerMoviesPageController implements Initializable {
         TextArea1.setText(synopsis);
     }
     
+       public void setMemberName(String memberEmployee){
+        Label5.setText(memberEmployee);
+    }
+    
     Image myimage = new Image(getClass().getResourceAsStream("image1.png"));
     
     public void DisplayImage(){
      imageview1.setImage(myimage);   
     }
     
+     public boolean isStringInt(String s){
+        try{
+            Integer.parseInt(s);
+            return true;
+        }catch(NumberFormatException ex){
+            return false;
+        }
+    }
+     
+ 
    
     @FXML
     void handleButtonAction1(ActionEvent event) {
+
+       try{
+ 
+                    String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
+                    String User      = "root";
+                    String Password  = "root";
+                
+                    Connection conn = DriverManager.getConnection(url, User, Password);
+
+                    Statement stmt=conn.createStatement(); 
+   
+            if(TextField1.getText().equals("")){
+                IncorrectLabel1.setVisible(true);
+                
+            }else{
+                    
+                if(isStringInt(TextField1.getText())==false ){
+                    IncorrectLabel2.setVisible(true);   
+              
+                }else{
+                    
+                    ResultSet rs1=stmt.executeQuery("SELECT ID from movies where Title='"+Label1.getText()+"' ");
+                     
+                    if(rs1.next()){
+                     
+                     ResultSet rs2=stmt.executeQuery("SELECT IDscreen from screensession where IDmovie='"+rs1.getInt(1)+"' and Date=2022-06-28 ");
+                     
+                        if(rs2.next()){
+                            
+                            ResultSet rs3=stmt.executeQuery("SELECT Seats from screen where IDscreen ='"+rs2.getInt(1)+"' ");
+                            
+                            if(rs3.next()){
+                     
+                                String text = TextField1.getText();
+                                int x = Integer.parseInt(text);
+                                
+                                if(rs3.getInt(1)>=x){
+                                    
+                                    int rs4=stmt.executeUpdate("UPDATE screen SET Seats='"+rs3.getInt(1)+"' - '"+TextField1.getText()+"' ");
+                                    //int rs5=stmt.executeUpdate("INSERT INTO mticket (IDmember, IDmovie) VALUES ('"+TextField2.getText()+"', rs1.getInt(1))");   
+                                    
+                                }else{
+                                   IncorrectLabel1.setVisible(true); 
+                                }
+                            }
+                        }
+                    }
+                         
+                }
+                        
+            }
+            
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());          
+        } 
+            
     }
 
 
@@ -141,7 +215,8 @@ public class CustomerMoviesPageController implements Initializable {
                             setDuration("Duration : " + rs3.getString(2) + " min.");
                             setGenre("Genre : " + rs3.getString(3));
                             setSynopsis("Synopsis : " + rs3.getString(4));
-                            System.out.println(rs3.getInt(1));
+                            DisplayImage();
+                            
                             
                             }
                             
@@ -168,41 +243,42 @@ public class CustomerMoviesPageController implements Initializable {
             } 
     }
 
-    @FXML
-    void hundleButtonAction3(ActionEvent event) throws IOException {
-    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-    loadScene1();
-    }
     
-    /*ObservableList<String> Dateslist = new SortedList<String>();
+    
+    ObservableList<String> Dateslist = FXCollections.observableArrayList();
 
-
-       String url       = "jdbc:mysql://localhost:3306/cinema_project_1";
-       String user      = "root";
-       String password  = "root";
-
-
-       public void SQLDate (){
+    public ObservableList<String> SQLDate (){
+           
+       ObservableList<String> Dateslist2 = FXCollections.observableArrayList();  
+       
            Connection conn = null;
         try {
 
-                String url       = "jdbc:mysql://localhost:3306/cinema_projet_1";
-                String user      = "root";
-                String password  = "root";
+            String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
+            String user      = "root";
+            String password  = "root";
 
-                // create a connection to the database
-                conn = DriverManager.getConnection(url, user, password);
+            conn = DriverManager.getConnection(url, user, password);
 
-                Statement stmt=conn.createStatement(); 
-                ResultSet rs=stmt.executeQuery("select Date from screensession"); 
-                while(rs.next()){
-                System.out.println(rs.getString(1));
-                DatesList.add(rs.getString(1)); 
-                }
-
-            } catch(SQLException e) {
-                System.out.println(e.getMessage());
-            } finally {
+            Statement stmt=conn.createStatement();
+                
+            //ResultSet rs1=stmt.executeQuery("SELECT ID from movies where Title='"+Label1.getText()+"' ");
+                
+                //if(rs1.next()){
+                //System.out.println(rs1.getString(1));
+                ResultSet rs=stmt.executeQuery("SELECT Date from screensession where IDmovie=1"); 
+                
+                    while(rs.next()){
+                        System.out.println(rs.getString(1));
+                        Dateslist2.add(rs.getString(1)); 
+                    }
+                //}
+                
+            Combo1.setItems(Dateslist2);
+            
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
                 try{
                     if(conn != null)
                     conn.close();
@@ -210,16 +286,21 @@ public class CustomerMoviesPageController implements Initializable {
                     System.out.println(ex.getMessage());
                 }
         }
-    }*/
+        System.out.println(Dateslist2);
+        return Dateslist2;
+    }
     
+    @FXML
+    void hundleButtonAction3(ActionEvent event) throws IOException {
+    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    loadScene1();
+    }   
+       
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       //SQLDate();
-       //Combo1.setItems(DatesList);
-    
-       //imageview1.setImage(new Image("image1.png"));
-    }    
-    
+       SQLDate();
+    }   
+
     private void loadScene1() throws IOException {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
     Parent root1 =(Parent) loader.load();

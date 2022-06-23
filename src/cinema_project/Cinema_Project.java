@@ -30,8 +30,9 @@ public class Cinema_Project extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         launch(args);
+        Image img = new Image("D://users/laurentdavenne/desktop/PHOTOS/IMG_4146.jpg");
     }
     
 }
