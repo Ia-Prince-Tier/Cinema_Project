@@ -42,10 +42,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="button3" layoutX="494.0" layoutY="346.0" mnemonicParsing="false" onAction="#hundleButtonAction3" prefHeight="35.0" prefWidth="92.0" text="Back" visible="false">
-         <font>
-            <Font size="16.0" />
-         </font></Button>
+      <Button fx:id="button3" layoutX="448.0" layoutY="362.0" mnemonicParsing="false" onAction="#hundleButtonAction3" prefHeight="25.0" prefWidth="138.0" text="Back" />
       <Label fx:id="IncorrectLabel1" layoutX="163.0" layoutY="91.0" prefHeight="17.0" prefWidth="285.0" text="There are no movies that match your request." textFill="#eb0f0f" visible="false">
          <font>
             <Font name="Kohinoor Telugu" size="13.0" />

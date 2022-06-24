@@ -32,7 +32,6 @@ public class Cinema_Project extends Application {
      */
     public static void main(String[] args) throws Exception {
         launch(args);
-        Image img = new Image("D://users/laurentdavenne/desktop/PHOTOS/IMG_4146.jpg");
     }
     
 }

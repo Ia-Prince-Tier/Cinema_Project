@@ -41,7 +41,7 @@ public class CustomerMoviesPageController implements Initializable {
 
     public int x;
     @FXML
-    private ComboBox<String> Combo1;
+    public ComboBox<String> Combo1;
 
     @FXML
     private ComboBox<String> Combo2;
@@ -85,6 +85,9 @@ public class CustomerMoviesPageController implements Initializable {
     @FXML
     private ImageView imageview1;
     
+    
+    
+    
     public void setTitle(String nameTitle){
         Label1.setText(nameTitle);
     }
@@ -111,7 +114,9 @@ public class CustomerMoviesPageController implements Initializable {
      imageview1.setImage(myimage);   
     }
     
-     public boolean isStringInt(String s){
+    
+    
+    public boolean isStringInt(String s){
         try{
             Integer.parseInt(s);
             return true;
@@ -119,21 +124,102 @@ public class CustomerMoviesPageController implements Initializable {
             return false;
         }
     }
-     
+
+    public ObservableList<String> SQLDate (){
  
-   
+       ObservableList<String> Dateslist2 = FXCollections.observableArrayList();  
+       
+           Connection conn = null;
+           
+        try {
+
+            String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
+            String user      = "root";
+            String password  = "root";
+
+            conn = DriverManager.getConnection(url, user, password);
+
+            Statement stmt=conn.createStatement();
+    
+            ResultSet rs1=stmt.executeQuery("SELECT Date, Time from screensession where IDmovie=1 "); 
+                
+            while(rs1.next()){
+                
+                Dateslist2.add(rs1.getString(1) + " at " + rs1.getString(2)); 
+                
+            }
+                     
+            Combo1.setItems(Dateslist2);
+                
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+                try{
+                    if(conn != null)
+                    conn.close();
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());
+                }
+        }
+
+        return Dateslist2;
+    }
+    
+     public ObservableList<String> SQLDate2 (){
+ 
+       ObservableList<String> Dateslist3 = FXCollections.observableArrayList();  
+       
+           Connection conn = null;
+           
+        try {
+
+            String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
+            String user      = "root";
+            String password  = "root";
+
+            conn = DriverManager.getConnection(url, user, password);
+
+            Statement stmt=conn.createStatement();
+
+            ResultSet rs0=stmt.executeQuery("SELECT ID from movies where Title='"+Label1.getText()+"' "); 
+                    
+                if(rs0.next()){
+                    
+                    ResultSet rs1=stmt.executeQuery("SELECT Date, Time from screensession where IDmovie='"+rs0.getInt(1)+"'"); 
+                    
+                    while(rs1.next()){
+                        
+                        Dateslist3.add(rs1.getString(1) + " at " + rs1.getString(2)); 
+                    }
+                }
+                    
+            Combo1.setItems(Dateslist3);
+                          
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+                try{
+                    if(conn != null)
+                    conn.close();
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());
+                }
+        }
+
+        return Dateslist3;
+    }
+    
     @FXML
-    void handleButtonAction1(ActionEvent event) {
+    void handleButtonAction1(ActionEvent event) throws IOException {
 
        try{
- 
-                    String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
-                    String User      = "root";
-                    String Password  = "root";
+            String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
+            String User      = "root";
+            String Password  = "root";
                 
-                    Connection conn = DriverManager.getConnection(url, User, Password);
+            Connection conn = DriverManager.getConnection(url, User, Password);
 
-                    Statement stmt=conn.createStatement(); 
+            Statement stmt=conn.createStatement(); 
    
             if(TextField1.getText().equals("")){
                 IncorrectLabel1.setVisible(true);
@@ -148,32 +234,51 @@ public class CustomerMoviesPageController implements Initializable {
                     ResultSet rs1=stmt.executeQuery("SELECT ID from movies where Title='"+Label1.getText()+"' ");
                      
                     if(rs1.next()){
-                     
-                     ResultSet rs2=stmt.executeQuery("SELECT IDscreen from screensession where IDmovie='"+rs1.getInt(1)+"' and Date=2022-06-28 ");
-                     
+                        
+                    System.out.println(rs1.getInt(1));
+                    System.out.println(Combo1.getValue().substring(0, 10));
+                    System.out.println(Combo1.getValue().substring(14, 19));
+                    int z = rs1.getInt(1);
+                    
+                    ResultSet rs2=stmt.executeQuery("SELECT IDscreen from screensession where IDmovie='"+rs1.getInt(1)+"' and Date='"+Combo1.getValue().substring(0, 10)+"' and Time='"+Combo1.getValue().substring(14, 19)+"' ");
+                   
                         if(rs2.next()){
                             
-                            ResultSet rs3=stmt.executeQuery("SELECT Seats from screen where IDscreen ='"+rs2.getInt(1)+"' ");
-                            
-                            if(rs3.next()){
+                        System.out.println(rs2.getInt(1));
+                        int y = rs2.getInt(1);
+                          
+                        ResultSet rs3=stmt.executeQuery("SELECT Seats_already_booked from screensession where IDmovie='"+z+"' and Date='"+Combo1.getValue().substring(0, 10)+"' and Time='"+Combo1.getValue().substring(14, 19)+"' ");
                      
-                                String text = TextField1.getText();
-                                int x = Integer.parseInt(text);
+                            if(rs3.next()){
+                            
+                            System.out.println(rs3.getInt(1));
+                            int x = rs3.getInt(1);    
+                          
+                            ResultSet rs4=stmt.executeQuery("SELECT Seats from screen where ID ='"+y+"' ");
+                            
+                                if(rs4.next()){
+                                    
+                                System.out.println(rs4.getInt(1));
                                 
-                                if(rs3.getInt(1)>=x){
+                                String text = TextField1.getText();
+                                int t = Integer.parseInt(text);
+                                System.out.println(t);
+                                
+                                    if(rs4.getInt(1)>=t+x){
                                     
-                                    int rs4=stmt.executeUpdate("UPDATE screen SET Seats='"+rs3.getInt(1)+"' - '"+TextField1.getText()+"' ");
-                                    //int rs5=stmt.executeUpdate("INSERT INTO mticket (IDmember, IDmovie) VALUES ('"+TextField2.getText()+"', rs1.getInt(1))");   
+                                    System.out.println("requete4 validée");
                                     
-                                }else{
-                                   IncorrectLabel1.setVisible(true); 
+                                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+                                    loadScene2();
+                                    
+                                    }else{
+                                    IncorrectLabel1.setVisible(true); 
+                                    }
                                 }
                             }
-                        }
+                        }    
                     }
-                         
-                }
-                        
+                }     
             }
             
         } catch(SQLException e) {
@@ -185,7 +290,8 @@ public class CustomerMoviesPageController implements Initializable {
 
     @FXML
     void hundleButtonAction2(ActionEvent event) {
-        int x;        
+        int x;    
+
             try {
  
                 String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
@@ -204,21 +310,21 @@ public class CustomerMoviesPageController implements Initializable {
                     ResultSet rs2=stmt.executeQuery("SELECT ID from movies where Title='"+Label1.getText()+"' ");
 
                     if(rs2.next()){ 
-                        
+
                         if(rs2.getInt(1)==x){
                     
-                        ResultSet rs3=stmt.executeQuery("select Title, Duration, Genre, Synopsis from movies where ID=3 ");
-                
+                        ResultSet rs3=stmt.executeQuery("select Title, Duration, Genre, Synopsis from movies where ID=1 ");
+                        
                             if(rs3.next()){
 
                             setTitle(rs3.getString(1));
                             setDuration("Duration : " + rs3.getString(2) + " min.");
                             setGenre("Genre : " + rs3.getString(3));
                             setSynopsis("Synopsis : " + rs3.getString(4));
-                            DisplayImage();
-                            
+                            SQLDate();
                             
                             }
+
                             
                         }else{
                             
@@ -230,65 +336,18 @@ public class CustomerMoviesPageController implements Initializable {
                             setDuration("Duration : " + rs3.getString(2) + " min.");
                             setGenre("Genre : " + rs3.getString(3));
                             setSynopsis("Synopsis : " + rs3.getString(4));
-                            System.out.println(rs3.getInt(1));
-                
+                            SQLDate2();
+                            
                             }    
                         }
                     }
                 }
-             
-                    
+      
             } catch(SQLException e) {
                 System.out.println(e.getMessage());
             } 
     }
 
-    
-    
-    ObservableList<String> Dateslist = FXCollections.observableArrayList();
-
-    public ObservableList<String> SQLDate (){
-           
-       ObservableList<String> Dateslist2 = FXCollections.observableArrayList();  
-       
-           Connection conn = null;
-        try {
-
-            String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
-            String user      = "root";
-            String password  = "root";
-
-            conn = DriverManager.getConnection(url, user, password);
-
-            Statement stmt=conn.createStatement();
-                
-            //ResultSet rs1=stmt.executeQuery("SELECT ID from movies where Title='"+Label1.getText()+"' ");
-                
-                //if(rs1.next()){
-                //System.out.println(rs1.getString(1));
-                ResultSet rs=stmt.executeQuery("SELECT Date from screensession where IDmovie=1"); 
-                
-                    while(rs.next()){
-                        System.out.println(rs.getString(1));
-                        Dateslist2.add(rs.getString(1)); 
-                    }
-                //}
-                
-            Combo1.setItems(Dateslist2);
-            
-        } catch(SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-                try{
-                    if(conn != null)
-                    conn.close();
-                }catch(SQLException ex){
-                    System.out.println(ex.getMessage());
-                }
-        }
-        System.out.println(Dateslist2);
-        return Dateslist2;
-    }
     
     @FXML
     void hundleButtonAction3(ActionEvent event) throws IOException {
@@ -298,7 +357,6 @@ public class CustomerMoviesPageController implements Initializable {
        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       SQLDate();
     }   
 
     private void loadScene1() throws IOException {
@@ -309,6 +367,20 @@ public class CustomerMoviesPageController implements Initializable {
     stage.setScene(new Scene(root1));
     stage.setTitle("HomePage");
     stage.show();
+    }
+    
+    private void loadScene2() throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("BookingPage.fxml"));
+    Parent root1 =(Parent) loader.load();
+    BookingPageController s3Controller = loader.getController();
+    Stage stage = new Stage();
+    stage.setScene(new Scene(root1));
+    stage.setTitle("BookingPage");
+    stage.show();
+    s3Controller.setTitleBooking(Label1.getText());
+    s3Controller.setDurationBooking(Label2.getText());
+    s3Controller.setGenreBooking(Label3.getText());
+    s3Controller.setSreenSesssionBooking(Combo1.getValue());
     }
     
     

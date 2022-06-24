@@ -29,6 +29,12 @@ import javafx.stage.Stage;
  * @author laurentdavenne
  */
 public class MemberRegisterPageController implements Initializable {
+    
+    public String FirstTitle;
+    
+    public String getFirstTitle(){
+        return FirstTitle;
+    }
 
     @FXML
     private TextField LoginText;
@@ -90,6 +96,33 @@ public class MemberRegisterPageController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.setTitle("CustomerMoviesPage");
         s3Controller.setMemberName("Bonjour " + LoginText.getText() + "!");
+        
+                try {
+ 
+                String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
+                String User      = "root";
+                String Password  = "root";
+                
+                Connection conn = DriverManager.getConnection(url, User, Password);
+
+                Statement stmt=conn.createStatement(); 
+    
+                ResultSet rs1=stmt.executeQuery("select Title, Duration, Genre, Synopsis from movies where ID=1");
+                
+                    while(rs1.next()) {
+                        s3Controller.setTitle(rs1.getString(1));
+                        FirstTitle=(rs1.getString(1));
+                        s3Controller.setDuration("Duration : " + rs1.getString(2) + " min.");
+                        s3Controller.setGenre("Genre : " + rs1.getString(3));
+                        s3Controller.setSynopsis("Synopsis : " + rs1.getString(4));
+                        s3Controller.DisplayImage();
+                        s3Controller.SQLDate();  
+                    }
+                    
+        } catch(SQLException e) {
+           System.out.println(e.getMessage());
+        } 
+        
         stage.show();
     }
             

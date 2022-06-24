@@ -33,6 +33,11 @@ import javafx.stage.Stage;
  */
 public class HomePageController implements Initializable {
     
+    public String FirstTitle;
+    
+    public String getFirstTitle(){
+        return FirstTitle;
+    }
     
     @FXML
     private Button button;
@@ -86,13 +91,12 @@ private void handleButtonAction(ActionEvent event) throws IOException {
                 
                     while(rs1.next()) {
                         s3Controller.setTitle(rs1.getString(1));
+                        FirstTitle=(rs1.getString(1));
                         s3Controller.setDuration("Duration : " + rs1.getString(2) + " min.");
                         s3Controller.setGenre("Genre : " + rs1.getString(3));
                         s3Controller.setSynopsis("Synopsis : " + rs1.getString(4));
                         s3Controller.DisplayImage();
-                        
-                        
-                        
+                        s3Controller.SQLDate();  
                     }
                     
         } catch(SQLException e) {

@@ -91,6 +91,15 @@ public class UpdateMoviePageController implements Initializable {
     void hundleButtonAction1(ActionEvent event) {
         
         IncorrectLabel1.setVisible(false);
+        Label1.setVisible(false);
+        Label2.setVisible(false);
+        Label3.setVisible(false);
+        Label4.setVisible(false);
+        TextField2.setVisible(false);
+        TextField3.setVisible(false);
+        TextField4.setVisible(false);
+        button2.setVisible(false);
+        button3.setVisible(false);
         
         try {
  

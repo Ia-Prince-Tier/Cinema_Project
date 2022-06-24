@@ -57,8 +57,11 @@ public class DeleteMoviePageController implements Initializable {
     @FXML
     void hundleButtonAction2(ActionEvent event) throws IOException, SQLException{
         
-        int lastid;
+        noMovieText.setVisible(false);
         
+        if(movieTextField.getText().equals("")){
+           noMovieText.setVisible(true); 
+        }else{
                 try {
  
                 String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
@@ -68,27 +71,31 @@ public class DeleteMoviePageController implements Initializable {
                 Connection conn = DriverManager.getConnection(url, User, Password);
 
                 Statement stmt=conn.createStatement(); 
-    
-                int rs=stmt.executeUpdate("delete from movies Where Title='"+movieTextField.getText()+"'");
                 
-                stmt.executeUpdate("SET @autoid := 0");
-                stmt.executeUpdate("UPDATE movies SET ID = @autoid := (@autoid+1)");
-                stmt.executeUpdate("ALTER TABLE movies AUTO_INCREMENT = 1");
-                    
-                    if (rs==0){
-                    noMovieText.setVisible(true);
-                    }else{
+                ResultSet rs1=stmt.executeQuery("SELECT ID from movies where Title='"+movieTextField.getText()+"'");
+                
+                    if(rs1.next()){
                         
-    
-                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-                    loadScene2();  
-                        }       
+                        int y = rs1.getInt(1);
+ 
+                        int rs2=stmt.executeUpdate("delete from screensession Where IDmovie ='"+y+"'");
+                        int rs3=stmt.executeUpdate("delete from movies Where ID ='"+y+"'");
                             
+                        stmt.executeUpdate("SET @autoid := 0");
+                        stmt.executeUpdate("UPDATE movies SET ID = @autoid := (@autoid+1)");
+                        stmt.executeUpdate("ALTER TABLE movies AUTO_INCREMENT = 1");
+                            
+                        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+                        loadScene2(); 
+                           
+                    }else{  
+                        noMovieText.setVisible(true);
+                    }       
 
                 } catch(SQLException e) {
                  System.out.println(e.getMessage());
                 } 
- 
+        }
     }
     
     @Override

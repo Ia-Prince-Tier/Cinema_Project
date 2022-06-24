@@ -17,27 +17,45 @@
             <Image url="@../../../../Desktop/PHOTOS/Capture%20d’écran%202022-01-09%20à%2001.26.20.png" />
          </image>
       </ImageView>
-      <ComboBox fx:id="Combo1" layoutX="35.0" layoutY="27.0" prefHeight="25.0" prefWidth="175.0" promptText="Broadcast days" />
-      <ComboBox fx:id="Combo2" layoutX="35.0" layoutY="115.0" prefHeight="25.0" prefWidth="175.0" promptText="Broadcast time" />
-      <Label fx:id="Label1" layoutX="429.0" layoutY="31.0" prefHeight="17.0" prefWidth="162.0" text="Title" textAlignment="CENTER" />
-      <Label fx:id="Label2" layoutX="429.0" layoutY="132.0" prefHeight="17.0" prefWidth="162.0" text="Duration" textAlignment="CENTER" />
-      <Label fx:id="Label3" layoutX="429.0" layoutY="237.0" prefHeight="17.0" prefWidth="162.0" text="Genre" textAlignment="CENTER" />
-      <Button fx:id="button3" layoutX="433.0" layoutY="353.0" mnemonicParsing="false" onAction="#hundleButtonAction3" prefHeight="25.0" prefWidth="153.0" text="Back" />
-      <Button fx:id="button2" layoutX="35.0" layoutY="353.0" mnemonicParsing="false" onAction="#hundleButtonAction2" prefHeight="25.0" prefWidth="175.0" text="Go to the next movie" />
-      <Button fx:id="button1" layoutX="35.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleButtonAction1" prefHeight="45.0" prefWidth="175.0" text="Book">
+      <ComboBox fx:id="Combo1" layoutX="16.0" layoutY="36.0" prefHeight="25.0" prefWidth="184.0" promptText="Broadcast days" />
+      <Label fx:id="Label1" layoutX="429.0" layoutY="31.0" prefHeight="17.0" prefWidth="162.0" text="Title" textAlignment="CENTER" textFill="#1f12c7">
          <font>
-            <Font size="24.0" />
+            <Font name="Kohinoor Telugu" size="13.0" />
+         </font></Label>
+      <Label fx:id="Label2" layoutX="429.0" layoutY="132.0" prefHeight="17.0" prefWidth="162.0" text="Duration" textAlignment="CENTER" textFill="#1f12c7">
+         <font>
+            <Font name="Kohinoor Telugu" size="13.0" />
+         </font></Label>
+      <Label fx:id="Label3" layoutX="429.0" layoutY="237.0" prefHeight="17.0" prefWidth="162.0" text="Genre" textAlignment="CENTER" textFill="#1f12c7">
+         <font>
+            <Font name="Kohinoor Telugu" size="13.0" />
+         </font></Label>
+      <Button fx:id="button3" layoutX="433.0" layoutY="353.0" mnemonicParsing="false" onAction="#hundleButtonAction3" prefHeight="25.0" prefWidth="153.0" text="Back">
+         <font>
+            <Font name="Kohinoor Telugu" size="13.0" />
+         </font></Button>
+      <Button fx:id="button2" layoutX="14.0" layoutY="353.0" mnemonicParsing="false" onAction="#hundleButtonAction2" prefHeight="25.0" prefWidth="184.0" text="Go to the next movie">
+         <font>
+            <Font name="Kohinoor Telugu" size="13.0" />
+         </font></Button>
+      <Button fx:id="button1" layoutX="14.0" layoutY="267.0" mnemonicParsing="false" onAction="#handleButtonAction1" prefHeight="76.0" prefWidth="184.0" text="Book">
+         <font>
+            <Font name="Kohinoor Telugu" size="36.0" />
          </font>
       </Button>
       <Label fx:id="Label5" layoutX="8.0" layoutY="6.0" prefHeight="17.0" prefWidth="53.0" text="Hello !" />
-      <TextField fx:id="TextField1" layoutX="35.0" layoutY="233.0" prefHeight="25.0" prefWidth="175.0" />
-      <Label fx:id="IncorrectLabel1" layoutX="25.0" layoutY="267.0" prefHeight="17.0" prefWidth="38.0" text="error" visible="false" />
-      <Label fx:id="Label6" layoutX="35.0" layoutY="207.0" prefHeight="17.0" prefWidth="175.0" text="How many tickets ?" textAlignment="CENTER" />
+      <TextField fx:id="TextField1" layoutX="16.0" layoutY="167.0" prefHeight="25.0" prefWidth="184.0" />
+      <Label fx:id="IncorrectLabel1" layoutX="14.0" layoutY="200.0" prefHeight="17.0" prefWidth="162.0" text="All fields must be filled in." textFill="#dd1515" visible="false" />
+      <Label fx:id="Label6" layoutX="19.0" layoutY="141.0" prefHeight="17.0" prefWidth="175.0" text="How many tickets ?" textAlignment="CENTER">
+         <font>
+            <Font name="Kohinoor Telugu" size="13.0" />
+         </font></Label>
       <TextArea fx:id="TextArea1" editable="false" layoutX="218.0" layoutY="267.0" prefHeight="76.0" prefWidth="368.0" wrapText="true">
          <font>
-            <Font size="9.0" />
+            <Font name="Kohinoor Telugu" size="9.0" />
          </font>
       </TextArea>
-      <Label fx:id="IncorrectLabel2" layoutX="123.0" layoutY="267.0" text="error2" visible="false" />
+      <Label fx:id="IncorrectLabel2" layoutX="14.0" layoutY="217.0" text="Please enter a integer." textFill="#dd1515" visible="false" />
+      <Label fx:id="IncorrectLabel3" layoutX="14.0" layoutY="237.0" prefHeight="17.0" prefWidth="120.0" text="This session is full." textFill="#dd1515" visible="false" />
    </children>
 </AnchorPane>

@@ -53,27 +53,29 @@ public class EmployeeRegisterPageController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException, SQLException {
         
-
-                try {
+        try {
  
-                String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
-                String User      = "root";
-                String Password  = "root";
+          String url       = "jdbc:mysql://localhost:8889/cinema_project_1";  
+          String User      = "root";
+          String Password  = "root";
                 
-                Connection conn = DriverManager.getConnection(url, User, Password);
+          Connection conn = DriverManager.getConnection(url, User, Password);
 
-                Statement stmt=conn.createStatement(); 
+          Statement stmt=conn.createStatement(); 
     
-                ResultSet rs=stmt.executeQuery("select * from Employee Where USER='"+LoginText.getText()+"' And PASSWORD='"+PasswordText.getText()+"'");
-                    if(rs.next()) {
-                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-                    loadScene1();
-                    }else{
-                    IncorrectLabel.setVisible(true);
-                    }
-                } catch(SQLException e) {
-                 System.out.println(e.getMessage());
-                } 
+          ResultSet rs=stmt.executeQuery("select * from Employee Where USER='"+LoginText.getText()+"' And PASSWORD='"+PasswordText.getText()+"'");
+            
+          if(rs.next()) {
+            ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+            loadScene1();
+                    
+          }else{
+            IncorrectLabel.setVisible(true);
+          }
+          
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        } 
  
     }   
     
@@ -96,6 +98,10 @@ public class EmployeeRegisterPageController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.setTitle("EmployeeMoviesPage");
         s3Controller.setEmployeeName("Bonjour " + LoginText.getText() + "!");
+        
+        
+        
+        
         stage.show();
         
         }
