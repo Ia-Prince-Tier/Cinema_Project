@@ -46,6 +46,9 @@ public class BookingPageController implements Initializable {
     @FXML
     private Label Label5;
     
+    @FXML
+    private Label Label6;
+    
     
     public void setTitleBooking(String nameTitle){
         Label1.setText(nameTitle);
@@ -59,13 +62,19 @@ public class BookingPageController implements Initializable {
         Label3.setText(genre);
     }
     
-    public void setSreenSesssionBooking(String screensession){
+    public void setSreenSessionBooking(String screensession){
         Label4.setText(screensession);
     }
     
-    public void setPriceBooking(String price){
-        Label4.setText(price);
+    public void setNumberOfTicketsBooking(String price){
+        Label5.setText(price);
     }
+    
+    public void setPriceBooking(String price){
+        Label6.setText(price);
+    }
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,9 +82,9 @@ public class BookingPageController implements Initializable {
     }  
     
     @FXML
-    void hundleButtonAction1(ActionEvent event) {
+    void hundleButtonAction1(ActionEvent event) throws IOException {
         
-        /* try{
+        try{
                 
             String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
             String User      = "root";
@@ -87,53 +96,51 @@ public class BookingPageController implements Initializable {
    
             ResultSet rs1=stmt.executeQuery("SELECT ID from movies where Title='"+Label1.getText()+"' ");
                      
-                    if(rs1.next()){
+                if(rs1.next()){
                         
-                     System.out.println(rs1.getInt(1));
-                     
-                     ResultSet rs2=stmt.executeQuery("SELECT Seats already booked from screensession where IDmovie='"+rs1.getInt(1)+"' AND Date='"+Label4.getText().substring(0, 10)+"' AND Time='"+Label4.getText().substring(14, 19)+"' ");
-                     
+                    System.out.println(rs1.getInt(1));
+                    System.out.println(Label4.getText().substring(0, 10));
+                    System.out.println(Label4.getText().substring(14, 22));
+                    int z = rs1.getInt(1);
+                    
+                    ResultSet rs2=stmt.executeQuery("SELECT IDscreen from screensession where IDmovie='"+rs1.getInt(1)+"' and Date='"+Label4.getText().substring(0, 10)+"' and Time='"+Label4.getText().substring(14, 22)+"' ");
+                   
                         if(rs2.next()){
                             
-                          System.out.println(rs2.getInt(1));
-                          int y = rs2.getInt(1);
+                        System.out.println(rs2.getInt(1));
+                        int y = rs2.getInt(1);
                           
-                          ResultSet rs3=stmt.executeQuery("SELECT IDscreen from screensession where IDmovie='"+rs1.getInt(1)+"' AND Date='"+Label4.getText().substring(0, 10)+"' AND Time='"+Label4.getText().substring(14, 19)+"' ");
-                          
-                          if(rs3.next()){
-                              
-                          System.out.println(rs3.getInt(1));
-                          int x = rs3.getInt(1);
-                          
-                          ResultSet rs3=stmt.executeQuery("SELECT Seats from screen where ID ='"+rs2.getInt(1)+"' ");
-                            
+                        ResultSet rs3=stmt.executeQuery("SELECT Seats_already_booked from screensession where IDmovie='"+z+"' and Date='"+Label4.getText().substring(0, 10)+"' and Time='"+Label4.getText().substring(14, 22)+"' ");
+                     
                             if(rs3.next()){
-                                
-                                System.out.println(rs3.getInt(1));
-                                String text = TextField1.getText();
-                                int x = Integer.parseInt(text);
-                                System.out.println(x);
-                                
-                                if(rs3.getInt(1)>=x){
+                            
+                            System.out.println(rs3.getInt(1));
+                            int x = rs3.getInt(1);    
+                          
+                            ResultSet rs4=stmt.executeQuery("SELECT Seats from screen where ID ='"+y+"' ");
+                            
+                                if(rs4.next()){
                                     
-                                    int avalaibleseats=rs3.getInt(1)-x;
-                                    int rs4=stmt.executeUpdate("UPDATE screen SET Seats='"+avalaibleseats+"' where ID ='"+y+"' ");
-                                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-                                    loadScene2();
-                                }else{
-                                   IncorrectLabel1.setVisible(true); 
+                                System.out.println(rs4.getInt(1));
+                                
+                                String text = Label5.getText();
+                                int t = Integer.parseInt(text);
+                                System.out.println(t);
+                                
+                                int seats_already_booked =x+t;
+                                int rs5=stmt.executeUpdate("UPDATE screensession SET Seats_already_booked='"+seats_already_booked+"' where IDscreen ='"+y+"' and IDmovie = '"+z+"' ");
+                                ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+                                loadScene2();  
                                 }
                             }
                         }
                     }
-                }       
-                
-                        
-            
             
         } catch(SQLException e) {
             System.out.println(e.getMessage());          
-        } */
+        } 
+
+
 
     }
 
@@ -150,6 +157,16 @@ public class BookingPageController implements Initializable {
     Stage stage = new Stage();
     stage.setScene(new Scene(root1));
     stage.setTitle("HomeMoviesPage");
+    stage.show();
+    }
+    
+    private void loadScene2() throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("Payment.fxml"));
+    Parent root1 =(Parent) loader.load();
+    PaymentController s3Controller = loader.getController();
+    Stage stage = new Stage();
+    stage.setScene(new Scene(root1));
+    stage.setTitle("PaymentPage");
     stage.show();
     }
     

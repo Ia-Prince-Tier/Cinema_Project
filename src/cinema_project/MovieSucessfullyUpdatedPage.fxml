@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="cinema_project.MovieSucessfullyUpdatedPageController">
    <children>
-      <Label layoutX="23.0" layoutY="111.0" prefHeight="27.0" prefWidth="554.0" text="Congratulations! You have just updated this movie to the database." textFill="#1f12c7">
+      <Label layoutX="23.0" layoutY="111.0" prefHeight="27.0" prefWidth="554.0" text="Congraculations! You have just updated this movie to the database." textFill="#1f12c7">
          <font>
             <Font name="Kohinoor Telugu" size="18.0" />
          </font>

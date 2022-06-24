@@ -5,10 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="cinema_project.MovieSucessfullyDeletedPageController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.MovieSucessfullyDeletedPageController">
    <children>
-      <Label layoutX="23.0" layoutY="111.0" prefHeight="27.0" prefWidth="554.0" text="Congratulations! You have just deleted this movie to the database." textFill="#1f12c7">
+      <Label layoutX="23.0" layoutY="111.0" prefHeight="27.0" prefWidth="554.0" text="Congraculations! You have just deleted this movie to the database." textFill="#1f12c7">
          <font>
             <Font name="Kohinoor Telugu" size="18.0" />
          </font>

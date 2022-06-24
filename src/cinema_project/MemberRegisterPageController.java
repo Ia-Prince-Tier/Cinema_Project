@@ -115,7 +115,7 @@ public class MemberRegisterPageController implements Initializable {
                         s3Controller.setDuration("Duration : " + rs1.getString(2) + " min.");
                         s3Controller.setGenre("Genre : " + rs1.getString(3));
                         s3Controller.setSynopsis("Synopsis : " + rs1.getString(4));
-                        s3Controller.DisplayImage();
+                        s3Controller.getFirstTitle1();
                         s3Controller.SQLDate();  
                     }
                     

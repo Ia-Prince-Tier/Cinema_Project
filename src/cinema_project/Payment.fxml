@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.PaymentController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="cinema_project.PaymentController">
+   <children>
+      <Label layoutX="75.0" layoutY="116.0" prefHeight="27.0" prefWidth="450.0" text="Congraculations ! Your payment has been accepted !" textFill="#1f12c7">
+         <font>
+            <Font name="Kohinoor Telugu" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="button" layoutX="206.0" layoutY="200.0" mnemonicParsing="false" onAction="#hundleButtonAction" text="Back to home page">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

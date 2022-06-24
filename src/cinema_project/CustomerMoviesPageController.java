@@ -68,6 +68,9 @@ public class CustomerMoviesPageController implements Initializable {
     private Label IncorrectLabel2;
     
     @FXML
+    private Label IncorrectLabel3;
+    
+    @FXML
     private TextArea TextArea1;
 
     @FXML
@@ -85,7 +88,7 @@ public class CustomerMoviesPageController implements Initializable {
     @FXML
     private ImageView imageview1;
     
-    
+    public String Title;
     
     
     public void setTitle(String nameTitle){
@@ -108,12 +111,41 @@ public class CustomerMoviesPageController implements Initializable {
         Label5.setText(memberEmployee);
     }
     
-    Image myimage = new Image(getClass().getResourceAsStream("image1.png"));
+    //HomePageController homePage = new HomePageController();
     
+    //Image myimage = new Image(getClass().getResourceAsStream(".png"));
+    /*
     public void DisplayImage(){
      imageview1.setImage(myimage);   
     }
+*/
     
+    public void getFirstTitle1() {
+           try {
+ 
+                String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
+                String User      = "root";
+                String Password  = "root";
+                
+                Connection conn = DriverManager.getConnection(url, User, Password);
+
+                Statement stmt=conn.createStatement(); 
+    
+                ResultSet rs1=stmt.executeQuery("select Title from movies where ID=1");
+                
+                    while(rs1.next()) {
+                        
+                        Title=(rs1.getString(1));
+                        Image myimage = new Image(getClass().getResourceAsStream(Title+".png"));
+                        imageview1.setImage(myimage);
+                    }
+                    
+        } catch(SQLException e) {
+           System.out.println(e.getMessage());
+        } 
+        
+        
+    }
     
     
     public boolean isStringInt(String s){
@@ -211,7 +243,11 @@ public class CustomerMoviesPageController implements Initializable {
     
     @FXML
     void handleButtonAction1(ActionEvent event) throws IOException {
-
+        
+       IncorrectLabel1.setVisible(false);
+       IncorrectLabel2.setVisible(false);
+       IncorrectLabel3.setVisible(false);
+        
        try{
             String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
             String User      = "root";
@@ -232,22 +268,24 @@ public class CustomerMoviesPageController implements Initializable {
                 }else{
                     
                     ResultSet rs1=stmt.executeQuery("SELECT ID from movies where Title='"+Label1.getText()+"' ");
+                    
+                    System.out.println(Label1.getText());
                      
                     if(rs1.next()){
                         
                     System.out.println(rs1.getInt(1));
                     System.out.println(Combo1.getValue().substring(0, 10));
-                    System.out.println(Combo1.getValue().substring(14, 19));
+                    System.out.println(Combo1.getValue().substring(14, 22));
                     int z = rs1.getInt(1);
                     
-                    ResultSet rs2=stmt.executeQuery("SELECT IDscreen from screensession where IDmovie='"+rs1.getInt(1)+"' and Date='"+Combo1.getValue().substring(0, 10)+"' and Time='"+Combo1.getValue().substring(14, 19)+"' ");
+                    ResultSet rs2=stmt.executeQuery("SELECT IDscreen from screensession where IDmovie='"+rs1.getInt(1)+"' and Date='"+Combo1.getValue().substring(0, 10)+"' and Time='"+Combo1.getValue().substring(14, 22)+"' ");
                    
                         if(rs2.next()){
                             
                         System.out.println(rs2.getInt(1));
                         int y = rs2.getInt(1);
                           
-                        ResultSet rs3=stmt.executeQuery("SELECT Seats_already_booked from screensession where IDmovie='"+z+"' and Date='"+Combo1.getValue().substring(0, 10)+"' and Time='"+Combo1.getValue().substring(14, 19)+"' ");
+                        ResultSet rs3=stmt.executeQuery("SELECT Seats_already_booked from screensession where IDmovie='"+z+"' and Date='"+Combo1.getValue().substring(0, 10)+"' and Time='"+Combo1.getValue().substring(14, 22)+"' ");
                      
                             if(rs3.next()){
                             
@@ -272,7 +310,7 @@ public class CustomerMoviesPageController implements Initializable {
                                     loadScene2();
                                     
                                     }else{
-                                    IncorrectLabel1.setVisible(true); 
+                                    IncorrectLabel3.setVisible(true); 
                                     }
                                 }
                             }
@@ -322,7 +360,8 @@ public class CustomerMoviesPageController implements Initializable {
                             setGenre("Genre : " + rs3.getString(3));
                             setSynopsis("Synopsis : " + rs3.getString(4));
                             SQLDate();
-                            
+                            Image myimage = new Image(getClass().getResourceAsStream(rs3.getString(1)+".png"));
+                            imageview1.setImage(myimage);
                             }
 
                             
@@ -337,7 +376,8 @@ public class CustomerMoviesPageController implements Initializable {
                             setGenre("Genre : " + rs3.getString(3));
                             setSynopsis("Synopsis : " + rs3.getString(4));
                             SQLDate2();
-                            
+                            Image myimage = new Image(getClass().getResourceAsStream(rs3.getString(1)+".png"));
+                            imageview1.setImage(myimage);
                             }    
                         }
                     }
@@ -380,7 +420,9 @@ public class CustomerMoviesPageController implements Initializable {
     s3Controller.setTitleBooking(Label1.getText());
     s3Controller.setDurationBooking(Label2.getText());
     s3Controller.setGenreBooking(Label3.getText());
-    s3Controller.setSreenSesssionBooking(Combo1.getValue());
+    s3Controller.setSreenSessionBooking(Combo1.getValue());
+    s3Controller.setNumberOfTicketsBooking(TextField1.getText());
+    
     }
     
     
