@@ -17,7 +17,7 @@
             <Image url="@../../../../Desktop/PHOTOS/Capture%20d’écran%202022-01-09%20à%2001.26.20.png" />
          </image>
       </ImageView>
-      <ComboBox fx:id="Combo1" layoutX="16.0" layoutY="36.0" prefHeight="25.0" prefWidth="184.0" promptText="Broadcast days" />
+      <ComboBox fx:id="Combo1" layoutX="16.0" layoutY="36.0" prefHeight="25.0" prefWidth="184.0" promptText="Broadcast sessions" />
       <Label fx:id="Label1" layoutX="429.0" layoutY="31.0" prefHeight="17.0" prefWidth="162.0" text="Title" textAlignment="CENTER" textFill="#1f12c7">
          <font>
             <Font name="Kohinoor Telugu" size="13.0" />
@@ -57,5 +57,10 @@
       </TextArea>
       <Label fx:id="IncorrectLabel2" layoutX="14.0" layoutY="217.0" text="Please enter a integer." textFill="#dd1515" visible="false" />
       <Label fx:id="IncorrectLabel3" layoutX="14.0" layoutY="237.0" prefHeight="17.0" prefWidth="120.0" text="This session is full." textFill="#dd1515" visible="false" />
+      <Label fx:id="IncorrectLabel4" layoutX="18.0" layoutY="87.0" text="You must select a session for this film" textFill="#f21a1a" visible="false">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

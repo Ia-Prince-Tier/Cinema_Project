@@ -21,6 +21,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -49,6 +52,28 @@ public class BookingPageController implements Initializable {
     @FXML
     private Label Label6;
     
+    @FXML
+    private TextField TextField1;
+
+    @FXML
+    private TextField TextField2;
+
+    @FXML
+    private TextField TextField3;
+
+    @FXML
+    private TextField TextField4;
+
+    @FXML
+    private TextField TextField5;
+    
+    @FXML
+    private ImageView imageview1;
+    
+    public void setImage(String Title){
+    Image myimage = new Image(getClass().getResourceAsStream(Title+".png"));
+    imageview1.setImage(myimage);
+    }
     
     public void setTitleBooking(String nameTitle){
         Label1.setText(nameTitle);

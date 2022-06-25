@@ -71,6 +71,9 @@ public class CustomerMoviesPageController implements Initializable {
     private Label IncorrectLabel3;
     
     @FXML
+    private Label IncorrectLabel4;
+    
+    @FXML
     private TextArea TextArea1;
 
     @FXML
@@ -239,6 +242,7 @@ public class CustomerMoviesPageController implements Initializable {
        IncorrectLabel1.setVisible(false);
        IncorrectLabel2.setVisible(false);
        IncorrectLabel3.setVisible(false);
+       IncorrectLabel4.setVisible(false);
         
        try{
             String url       = "jdbc:mysql://localhost:8889/cinema_project_1";
@@ -259,58 +263,63 @@ public class CustomerMoviesPageController implements Initializable {
               
                 }else{
                     
-                    ResultSet rs1=stmt.executeQuery("SELECT ID from movies where Title='"+Label1.getText()+"' ");
+                    if(Combo1.getValue()!=null){
                     
-                    System.out.println(Label1.getText());
+                        ResultSet rs1=stmt.executeQuery("SELECT ID from movies where Title='"+Label1.getText()+"' ");
+                    
+                        System.out.println(Label1.getText());
                      
-                    if(rs1.next()){
+                        if(rs1.next()){
                         
-                    System.out.println(rs1.getInt(1));
-                    System.out.println(Combo1.getValue().substring(0, 10));
-                    System.out.println(Combo1.getValue().substring(14, 22));
-                    int z = rs1.getInt(1);
+                        System.out.println(rs1.getInt(1));
+                        System.out.println(Combo1.getValue().substring(0, 10));
+                        System.out.println(Combo1.getValue().substring(14, 22));
+                        int z = rs1.getInt(1);
                     
-                    ResultSet rs2=stmt.executeQuery("SELECT IDscreen from screensession where IDmovie='"+rs1.getInt(1)+"' and Date='"+Combo1.getValue().substring(0, 10)+"' and Time='"+Combo1.getValue().substring(14, 22)+"' ");
+                        ResultSet rs2=stmt.executeQuery("SELECT IDscreen from screensession where IDmovie='"+rs1.getInt(1)+"' and Date='"+Combo1.getValue().substring(0, 10)+"' and Time='"+Combo1.getValue().substring(14, 22)+"' ");
                    
-                        if(rs2.next()){
+                            if(rs2.next()){
                             
-                        System.out.println(rs2.getInt(1));
-                        int y = rs2.getInt(1);
+                            System.out.println(rs2.getInt(1));
+                            int y = rs2.getInt(1);
                           
-                        ResultSet rs3=stmt.executeQuery("SELECT Seats_already_booked from screensession where IDmovie='"+z+"' and Date='"+Combo1.getValue().substring(0, 10)+"' and Time='"+Combo1.getValue().substring(14, 22)+"' ");
+                            ResultSet rs3=stmt.executeQuery("SELECT Seats_already_booked from screensession where IDmovie='"+z+"' and Date='"+Combo1.getValue().substring(0, 10)+"' and Time='"+Combo1.getValue().substring(14, 22)+"' ");
                      
-                            if(rs3.next()){
+                                if(rs3.next()){
                             
-                            System.out.println(rs3.getInt(1));
-                            int x = rs3.getInt(1);    
+                                System.out.println(rs3.getInt(1));
+                                int x = rs3.getInt(1);    
                           
-                            ResultSet rs4=stmt.executeQuery("SELECT Seats from screen where ID ='"+y+"' ");
+                                ResultSet rs4=stmt.executeQuery("SELECT Seats from screen where ID ='"+y+"' ");
                             
-                                if(rs4.next()){
+                                    if(rs4.next()){
                                     
-                                System.out.println(rs4.getInt(1));
+                                    System.out.println(rs4.getInt(1));
                                 
-                                String text = TextField1.getText();
-                                int t = Integer.parseInt(text);
-                                System.out.println(t);
+                                    String text = TextField1.getText();
+                                    int t = Integer.parseInt(text);
+                                    System.out.println(t);
                                 
-                                    if(rs4.getInt(1)>=t+x){
+                                        if(rs4.getInt(1)>=t+x){
                                     
-                                    System.out.println("requete4 validée");
+                                        System.out.println("requete4 validée");
                                     
-                                    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-                                    loadScene2();
+                                        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+                                        loadScene2();
                                     
-                                    }else{
-                                    IncorrectLabel3.setVisible(true); 
+                                        }else{
+                                        IncorrectLabel3.setVisible(true); 
+                                        }
                                     }
                                 }
-                            }
-                        }    
-                    }
-                }     
+                            }    
+                        }
+                        
+                    }else{
+                       IncorrectLabel4.setVisible(true); 
+                    }    
+                }    
             }
-            
         } catch(SQLException e) {
             System.out.println(e.getMessage());          
         } 
@@ -414,6 +423,7 @@ public class CustomerMoviesPageController implements Initializable {
     s3Controller.setGenreBooking(Label3.getText());
     s3Controller.setSreenSessionBooking(Combo1.getValue());
     s3Controller.setNumberOfTicketsBooking(TextField1.getText());
+    s3Controller.setImage(Label1.getText());
     
     }
     

@@ -85,7 +85,7 @@ public class AddMoviePageController implements Initializable {
         String pathImage;                                                                            
         String currentDirectory = System.getProperty("user.dir");                                    
         File source;
-        File dest = new File(currentDirectory + "\\Cinema_project\\src\\" + TextField2.getText() + ".png");     
+        File dest = new File(currentDirectory + "/src/cinema_project/"+ TextField2.getText() + ".png");     
         if (f != null && ! TextField2.getText().equals("")) {                                           
 
             pathImage = f.getAbsolutePath();                                                         
