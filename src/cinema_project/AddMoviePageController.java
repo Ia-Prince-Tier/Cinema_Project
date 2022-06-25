@@ -5,6 +5,8 @@
  */
 package cinema_project;
 
+//import java.io.File;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -22,7 +24,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import org.apache.commons.io.FileUtils;
 
 
 public class AddMoviePageController implements Initializable {
@@ -47,6 +52,9 @@ public class AddMoviePageController implements Initializable {
     private Button button2;
     
     @FXML
+    private Button button3;
+    
+    @FXML
     private Label IncorrectLabel1;
 
     @FXML
@@ -55,6 +63,9 @@ public class AddMoviePageController implements Initializable {
     @FXML
     private Label IncorrectLabel3;
     
+    @FXML
+    private Label lastLabel;
+    
     public boolean isStringInt(String s){
         try{
             Integer.parseInt(s);
@@ -62,6 +73,35 @@ public class AddMoviePageController implements Initializable {
         }catch(NumberFormatException ex){
             return false;
         }
+    }
+    
+    @FXML
+    void hundleButtonAction(ActionEvent event) throws IOException {
+    
+        FileChooser fc = new FileChooser(); 
+       
+        fc.getExtensionFilters().add(new ExtensionFilter("Images Files", "*.png"));                   
+        File f = fc.showOpenDialog(null);                                                            
+        String pathImage;                                                                            
+        String currentDirectory = System.getProperty("user.dir");                                    
+        File source;
+        File dest = new File(currentDirectory + "\\Cinema_project\\src\\" + TextField2.getText() + ".png");     
+        if (f != null && ! TextField2.getText().equals("")) {                                           
+
+            pathImage = f.getAbsolutePath();                                                         
+            source = new File(pathImage);                                                            
+
+            try {
+                FileUtils.copyFile(source, dest);                                                    
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println(dest);
+            lastLabel.setText("Image successfully imported !");  
+        } else {
+            lastLabel.setText("No files/incompatible file OR name of movie not entered.");
+        }  
+        
     }
     
     @FXML
@@ -111,6 +151,7 @@ public class AddMoviePageController implements Initializable {
                 }
             }           
     }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

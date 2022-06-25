@@ -111,14 +111,6 @@ public class CustomerMoviesPageController implements Initializable {
         Label5.setText(memberEmployee);
     }
     
-    //HomePageController homePage = new HomePageController();
-    
-    //Image myimage = new Image(getClass().getResourceAsStream(".png"));
-    /*
-    public void DisplayImage(){
-     imageview1.setImage(myimage);   
-    }
-*/
     
     public void getFirstTitle1() {
            try {

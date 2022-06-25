@@ -45,6 +45,12 @@ public class EmployeeMoviesPageController implements Initializable {
     @FXML
     private Button button4;
     
+    @FXML
+    private Button button5;
+
+    @FXML
+    private Button button6;
+    
     
     
     public void setEmployeeName(String nameEmployee){
@@ -73,6 +79,18 @@ public class EmployeeMoviesPageController implements Initializable {
     void hundleButtonAction4(ActionEvent event) throws IOException {
     ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
     loadScene4();
+    }
+    
+    @FXML
+    void hundleButtonAction5(ActionEvent event) throws IOException {
+    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    loadScene5();
+    }
+    
+    @FXML
+    void hundleButtonAction6(ActionEvent event) throws IOException {
+    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    loadScene6();
     }
     
     @Override
@@ -120,4 +138,26 @@ public class EmployeeMoviesPageController implements Initializable {
     stage.show();
     }
         
+    private void loadScene5() throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("AddMovieSessionPage.fxml"));
+    Parent root1 =(Parent) loader.load();
+    AddMovieSessionPageController s3Controller = loader.getController();
+    Stage stage = new Stage();
+    stage.setScene(new Scene(root1));
+    stage.setTitle("AddMovieSessionPagePage");
+    stage.show();
+    }
+    
+    private void loadScene6() throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("DeleteMovieSessionPage.fxml"));
+    Parent root1 =(Parent) loader.load();
+    DeleteMovieSessionPageController s3Controller = loader.getController();
+    Stage stage = new Stage();
+    stage.setScene(new Scene(root1));
+    stage.setTitle("DeleteMovieSessionPage");
+    stage.show();
+    }
+    
+    
+    
 }
