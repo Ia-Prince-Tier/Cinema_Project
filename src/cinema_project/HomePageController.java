@@ -76,6 +76,7 @@ private void handleButtonAction(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle("CustomerMoviesPage");
+        s3Controller.setPrice(10.50);
         
         try {
  
@@ -97,6 +98,7 @@ private void handleButtonAction(ActionEvent event) throws IOException {
                         s3Controller.setSynopsis("Synopsis : " + rs1.getString(4));
                         s3Controller.getFirstTitle1();
                         s3Controller.SQLDate();  
+                        
                     }
                     
         } catch(SQLException e) {

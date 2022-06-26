@@ -95,7 +95,9 @@ public class MemberRegisterPageController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));
         stage.setTitle("CustomerMoviesPage");
-        s3Controller.setMemberName("Bonjour " + LoginText.getText() + "!");
+        s3Controller.setMemberName("Hello " + LoginText.getText() + "!");
+        s3Controller.setPrice(8.50);
+        s3Controller.setMemberName2(LoginText.getText());
         
                 try {
  

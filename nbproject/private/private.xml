@@ -3,16 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/EmployeePage.fxml</file>
-            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/EmployeePageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/HistoryMemberPageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/UpdateMoviePageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/MovieSucessfullyDeletedPageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/PaymentController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/EmployeeRegisterPageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/Jurassik%20World%20Dominion.png</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/DeleteMovieSessionPage.fxml</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/History.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/MemberRegisterPageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/MovieSucessfullyUpdatedPageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/HistoryMemberPage.fxml</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/BookingPageController.java</file>
             <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/Cinema_Project.java</file>
             <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/HomePageController.java</file>
-            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/Test.java</file>
-            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/GuestPageController.java</file>
-            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/MemberPage.fxml</file>
-            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/HomeMemberController.java</file>
-            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/HomeMember.fxml</file>
-            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/MemberPageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/AddMovieSessionPage.fxml</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/AddMovieSessionPageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/DeleteMovieSessionPageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/Alexandre.png</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/AddMoviePageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/EmployeeMoviesPageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/CustomerMoviesPageController.java</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/Payment.fxml</file>
+            <file>file:/Users/laurentdavenne/NetBeansProjects/Cinema_Project/src/cinema_project/DeleteMoviePageController.java</file>
         </group>
     </open-files>
 </project-private>

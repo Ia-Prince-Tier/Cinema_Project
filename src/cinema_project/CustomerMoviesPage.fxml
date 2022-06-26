@@ -43,7 +43,7 @@
             <Font name="Kohinoor Telugu" size="36.0" />
          </font>
       </Button>
-      <Label fx:id="Label5" layoutX="8.0" layoutY="6.0" prefHeight="17.0" prefWidth="53.0" text="Hello !" />
+      <Label fx:id="Label5" layoutX="8.0" layoutY="6.0" prefHeight="17.0" prefWidth="101.0" text="Hello !" />
       <TextField fx:id="TextField1" layoutX="16.0" layoutY="167.0" prefHeight="25.0" prefWidth="184.0" />
       <Label fx:id="IncorrectLabel1" layoutX="14.0" layoutY="200.0" prefHeight="17.0" prefWidth="162.0" text="All fields must be filled in." textFill="#dd1515" visible="false" />
       <Label fx:id="Label6" layoutX="19.0" layoutY="141.0" prefHeight="17.0" prefWidth="175.0" text="How many tickets ?" textAlignment="CENTER">
@@ -62,5 +62,10 @@
             <Font size="10.0" />
          </font>
       </Label>
+      <Button fx:id="historybutton" layoutX="238.0" layoutY="353.0" mnemonicParsing="false" onAction="#hundleButtonAction4" prefHeight="27.0" prefWidth="153.0" text="History">
+         <font>
+            <Font name="Kohinoor Telugu" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

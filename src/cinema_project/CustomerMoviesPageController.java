@@ -91,7 +91,12 @@ public class CustomerMoviesPageController implements Initializable {
     @FXML
     private ImageView imageview1;
     
+    @FXML
+    private Button historybutton;
+    
     public String Title;
+    private double price;
+    public String memberName;
     
     
     public void setTitle(String nameTitle){
@@ -110,9 +115,19 @@ public class CustomerMoviesPageController implements Initializable {
         TextArea1.setText(synopsis);
     }
     
-       public void setMemberName(String memberEmployee){
-        Label5.setText(memberEmployee);
+    public void setMemberName(String membername){
+        Label5.setText(membername);
     }
+    
+    public void setMemberName2(String membername){
+        this.memberName=membername;
+    }
+    
+    public void setPrice(double price){
+        this.price=price;
+    }
+    
+    
     
     
     public void getFirstTitle1() {
@@ -257,8 +272,11 @@ public class CustomerMoviesPageController implements Initializable {
                 IncorrectLabel1.setVisible(true);
                 
             }else{
-                    
-                if(isStringInt(TextField1.getText())==false ){
+                
+                String text = TextField1.getText();
+                int g = Integer.parseInt(text);
+                
+                if(isStringInt(TextField1.getText())==false || g<=0){
                     IncorrectLabel2.setVisible(true);   
               
                 }else{
@@ -296,8 +314,8 @@ public class CustomerMoviesPageController implements Initializable {
                                     
                                     System.out.println(rs4.getInt(1));
                                 
-                                    String text = TextField1.getText();
-                                    int t = Integer.parseInt(text);
+                                    String text2 = TextField1.getText();
+                                    int t = Integer.parseInt(text2);
                                     System.out.println(t);
                                 
                                         if(rs4.getInt(1)>=t+x){
@@ -396,6 +414,12 @@ public class CustomerMoviesPageController implements Initializable {
     loadScene1();
     }   
        
+    @FXML
+    void hundleButtonAction4(ActionEvent event) throws IOException {
+    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    loadScene3();
+    } 
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }   
@@ -424,9 +448,26 @@ public class CustomerMoviesPageController implements Initializable {
     s3Controller.setSreenSessionBooking(Combo1.getValue());
     s3Controller.setNumberOfTicketsBooking(TextField1.getText());
     s3Controller.setImage(Label1.getText());
-    
+    String text = TextField1.getText();
+    int t = Integer.parseInt(text);
+    double Finalprice=t*price;
+    s3Controller.setPriceBooking(String.valueOf(Finalprice));
+    if(memberName != null){
+    s3Controller.setMemberBooking(memberName);
+    s3Controller.setMembernameinvisible(memberName);
+    }
     }
     
-    
+    private void loadScene3() throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("HistoryMemberPage.fxml"));
+    Parent root1 =(Parent) loader.load();
+    HistoryMemberPageController s3Controller = loader.getController();
+    s3Controller.setMemberName(memberName);
+    System.out.println("Hello" + memberName);
+    Stage stage = new Stage();
+    stage.setScene(new Scene(root1));
+    stage.setTitle("HistoryMemberPage");
+    stage.show();
+    }
     
 }

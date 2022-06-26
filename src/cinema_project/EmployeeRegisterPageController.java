@@ -28,6 +28,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 
+
 /**
  * FXML Controller class
  *
@@ -97,11 +98,7 @@ public class EmployeeRegisterPageController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));
         stage.setTitle("EmployeeMoviesPage");
-        s3Controller.setEmployeeName("Bonjour " + LoginText.getText() + "!");
-        
-        
-        
-        
+        s3Controller.setEmployeeName("Hello " + LoginText.getText() + "!");
         stage.show();
         
         }
