@@ -4,11 +4,11 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="cinema_project.DeleteMovieSessionPageController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.DeleteMovieSessionPageController">
    <children>
       <Label layoutX="44.0" layoutY="14.0" text="Enter the information of the movie session you want to delete" textFill="#4916d7">
          <font>
@@ -20,23 +20,38 @@
             <Font name="Kohinoor Telugu" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="TextField1" layoutX="204.0" layoutY="63.0" prefHeight="25.0" prefWidth="194.0" />
+      <TextField fx:id="TextField1" layoutX="204.0" layoutY="63.0" prefHeight="25.0" prefWidth="194.0">
+         <effect>
+            <InnerShadow />
+         </effect></TextField>
       <Button fx:id="button1" layoutX="242.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleButtonAction1" prefHeight="39.0" prefWidth="119.0" text="Confirm" visible="false">
          <font>
             <Font name="Kohinoor Telugu" size="18.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
       <Button fx:id="button2" layoutX="430.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleButtonAction2" prefHeight="27.0" prefWidth="146.0" text="Back">
          <font>
             <Font name="Kohinoor Telugu" size="13.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
       <Button fx:id="button3" layoutX="430.0" layoutY="62.0" mnemonicParsing="false" onAction="#handleButtonAction3" prefHeight="0.0" prefWidth="107.0" text="Confirm">
          <font>
             <Font name="Kohinoor Telugu" size="13.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
-      <ComboBox fx:id="Combo1" layoutX="117.0" layoutY="143.0" prefHeight="25.0" prefWidth="366.0" promptText="List of recorded screenings for this film" visible="false" />
+      <ComboBox fx:id="Combo1" layoutX="117.0" layoutY="143.0" prefHeight="25.0" prefWidth="366.0" promptText="List of recorded screenings for this film" visible="false">
+         <effect>
+            <InnerShadow />
+         </effect></ComboBox>
       <Label fx:id="IncorrectLabel1" layoutX="165.0" layoutY="89.0" prefHeight="19.0" prefWidth="274.0" text="There are no movies that match your request." textFill="#eb0f0f" visible="false">
          <font>
             <Font name="Kohinoor Telugu" size="13.0" />

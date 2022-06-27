@@ -98,6 +98,7 @@ public class AddMoviePageController implements Initializable {
             }
             System.out.println(dest);
             lastLabel.setText("Image successfully imported !");  
+            button2.setVisible(true);
         } else {
             lastLabel.setText("No files/incompatible file OR name of movie not entered.");
         }  

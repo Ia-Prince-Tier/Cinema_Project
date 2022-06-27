@@ -2,68 +2,68 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.EmployeeMoviesPageController">
    <children>
-      <Label fx:id="label" layoutX="8.0" layoutY="3.0" prefHeight="23.0" prefWidth="99.0">
+      <Label fx:id="label" layoutX="8.0" layoutY="3.0" prefHeight="23.0" prefWidth="196.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="155.0" layoutY="48.0" prefHeight="35.0" prefWidth="291.0" text=" What do you want to do?">
+      <Label layoutX="143.0" layoutY="37.0" prefHeight="35.0" prefWidth="291.0" text=" What do you want to do?" textFill="#2014c7">
          <font>
             <Font name="Kohinoor Telugu" size="24.0" />
          </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.31578946113586426" green="0.17836257815361023" blue="0.21959064900875092" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
       </Label>
       <Button fx:id="button" layoutX="74.0" layoutY="121.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="39.0" prefWidth="214.0" text="Add a movie" textFill="#133554">
          <font>
             <Font name="Kohinoor Telugu" size="18.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
       <Button fx:id="button2" layoutX="74.0" layoutY="181.0" mnemonicParsing="false" onAction="#hundleButtonAction2" prefHeight="39.0" prefWidth="214.0" text="Delete a movie" textFill="#133554">
          <font>
             <Font name="Kohinoor Telugu" size="18.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
       <Button fx:id="button3" layoutX="74.0" layoutY="241.0" mnemonicParsing="false" onAction="#hundleButtonAction3" prefHeight="39.0" prefWidth="453.0" text="Update the currently played movies" textFill="#171717">
          <font>
             <Font name="Kohinoor Telugu" size="18.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
       <Button fx:id="button4" layoutX="420.0" layoutY="357.0" mnemonicParsing="false" onAction="#hundleButtonAction4" prefHeight="29.0" prefWidth="162.0" text="Log off">
          <font>
             <Font name="Kohinoor Telugu" size="13.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
       <Button fx:id="button5" layoutX="313.0" layoutY="121.0" mnemonicParsing="false" onAction="#hundleButtonAction5" prefHeight="39.0" prefWidth="214.0" text="Add a movie session" textFill="#972b2b">
          <font>
             <Font name="Kohinoor Telugu" size="18.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
       <Button fx:id="button6" layoutX="313.0" layoutY="181.0" mnemonicParsing="false" onAction="#hundleButtonAction6" prefHeight="39.0" prefWidth="214.0" text="Delete a movie session" textFill="#972b2b">
          <font>
             <Font name="Kohinoor Telugu" size="18.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
    </children>
 </AnchorPane>

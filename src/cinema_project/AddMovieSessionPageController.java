@@ -221,16 +221,19 @@ public class AddMovieSessionPageController implements Initializable {
                         
                         if(RadioButton1.isSelected()){
                             
-                            int rs=stmt.executeUpdate("INSERT INTO screensession (Date, Time, IDmovie, Idscreen, Seats_already_booked) VALUES ('"+DatePicker.getValue()+"', '"+x+"', '"+rs0.getInt(1)+"', '1','0')");
-                            
+                            int rs=stmt.executeUpdate("INSERT INTO screensession (Date, Time, IDmovie, Idscreen) VALUES ('"+DatePicker.getValue()+"', '"+x+"', '"+rs0.getInt(1)+"', '1')");
+                            ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+                            loadScene();
                         }else if (RadioButton2.isSelected()){
                             
-                            int rs=stmt.executeUpdate("INSERT INTO screensession (Date, Time, IDmovie, Idscreen, Seats_already_booked) VALUES ('"+DatePicker.getValue()+"', '"+x+"', '"+rs0.getInt(1)+"', '2','0')");
-                            
+                            int rs=stmt.executeUpdate("INSERT INTO screensession (Date, Time, IDmovie, Idscreen) VALUES ('"+DatePicker.getValue()+"', '"+x+"', '"+rs0.getInt(1)+"', '2')");
+                            ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+                            loadScene();
                         }else if(RadioButton3.isSelected()){
                             
-                            int rs=stmt.executeUpdate("INSERT INTO screensession (Date, Time, IDmovie, Idscreen, Seats_already_booked) VALUES ('"+DatePicker.getValue()+"', '"+x+"', '"+rs0.getInt(1)+"', '3','0')");
-                            
+                            int rs=stmt.executeUpdate("INSERT INTO screensession (Date, Time, IDmovie, Idscreen) VALUES ('"+DatePicker.getValue()+"', '"+x+"', '"+rs0.getInt(1)+"', '3')");
+                            ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+                            loadScene();
                         }else{
                             IncorrectLabel2.setVisible(true);
                         }
@@ -281,6 +284,16 @@ public class AddMovieSessionPageController implements Initializable {
     Stage stage = new Stage();
     stage.setScene(new Scene(root1));
     stage.setTitle("EmployeeMoviesPage");
+    stage.show();
+    }
+    
+    private void loadScene() throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("MovieSessionSucessfullyAddedPage.fxml"));
+    Parent root1 =(Parent) loader.load();
+    MovieSessionSucessfullyAddedPageController s3Controller = loader.getController();
+    Stage stage = new Stage();
+    stage.setScene(new Scene(root1));
+    stage.setTitle("MovieSessionSucessfullyAddedPage");
     stage.show();
     }
     

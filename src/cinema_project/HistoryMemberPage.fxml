@@ -4,8 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.HistoryMemberPageController">
@@ -15,18 +15,28 @@
             <Font name="Kohinoor Telugu" size="13.0" />
          </font>
       </Label>
-      <TableView fx:id="historique" layoutX="165.0" layoutY="100.0" prefHeight="200.0" prefWidth="271.0" visible="false">
+      <TableView fx:id="historique" layoutX="53.0" layoutY="100.0" prefHeight="200.0" prefWidth="503.0" visible="false">
         <columns>
           <TableColumn fx:id="Titlecolumn" prefWidth="75.0" text="Title" />
           <TableColumn fx:id="Screensessioncolumn" prefWidth="97.0" text="Screensession" />
             <TableColumn fx:id="Ticketnumbercolumn" prefWidth="97.0" text="Ticketnumber" />
         </columns>
       </TableView>
-      <Button fx:id="button1" layoutX="240.0" layoutY="57.0" mnemonicParsing="false" onAction="#hundleButtonAction" prefHeight="25.0" prefWidth="121.0" text="Get my history">
+      <Button fx:id="button1" layoutX="144.0" layoutY="41.0" mnemonicParsing="false" onAction="#hundleButtonAction" prefHeight="27.0" prefWidth="312.0" text="View my history">
+         <font>
+            <Font name="Kohinoor Telugu" size="13.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
+      <Button fx:id="button2" layoutX="428.0" layoutY="361.0" mnemonicParsing="false" onAction="#hundleButtonAction2" prefHeight="25.0" prefWidth="158.0" text="Back">
+         <effect>
+            <InnerShadow />
+         </effect>
          <font>
             <Font name="Kohinoor Telugu" size="13.0" />
          </font>
       </Button>
-      <StackPane layoutX="386.0" layoutY="225.0" prefHeight="150.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

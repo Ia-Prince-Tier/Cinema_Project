@@ -77,8 +77,7 @@ public class DeleteMoviePageController implements Initializable {
                     if(rs1.next()){
                         
                         int y = rs1.getInt(1);
- 
-                        int rs2=stmt.executeUpdate("delete from screensession Where IDmovie ='"+y+"'");
+                        
                         int rs3=stmt.executeUpdate("delete from movies Where ID ='"+y+"'");
                             
                         stmt.executeUpdate("SET @autoid := 0");

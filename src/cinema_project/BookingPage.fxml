@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -49,11 +50,17 @@
          <font>
             <Font name="Kohinoor Telugu" size="36.0" />
          </font>
+         <effect>
+            <InnerShadow />
+         </effect>
       </Button>
       <Button fx:id="button2" layoutX="390.0" layoutY="355.0" mnemonicParsing="false" onAction="#hundleButtonAction2" prefHeight="25.0" prefWidth="195.0" text="Back">
          <font>
             <Font name="Kohinoor Telugu" size="13.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Button>
       <Label layoutX="16.0" layoutY="159.0" prefHeight="27.0" prefWidth="166.0" text="Number of tickets :" textFill="#1f12c7">
          <font>
             <Font name="Kohinoor Telugu" size="16.0" />
@@ -89,9 +96,18 @@
             <Font name="Kohinoor Telugu" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="TextField1" layoutX="193.0" layoutY="265.0" prefHeight="25.0" prefWidth="179.0" />
-      <TextField fx:id="TextField2" layoutX="193.0" layoutY="296.0" prefHeight="25.0" prefWidth="179.0" />
-      <TextField fx:id="TextField3" layoutX="193.0" layoutY="355.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField fx:id="TextField1" layoutX="193.0" layoutY="265.0" prefHeight="25.0" prefWidth="179.0">
+         <effect>
+            <InnerShadow />
+         </effect></TextField>
+      <TextField fx:id="TextField2" layoutX="193.0" layoutY="296.0" prefHeight="25.0" prefWidth="179.0">
+         <effect>
+            <InnerShadow />
+         </effect></TextField>
+      <TextField fx:id="TextField3" layoutX="193.0" layoutY="355.0" prefHeight="25.0" prefWidth="179.0">
+         <effect>
+            <InnerShadow />
+         </effect></TextField>
       <ImageView fx:id="imageview1" fitHeight="206.0" fitWidth="221.0" layoutX="364.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="10.0" layoutY="66.0" text=" Genre :" textFill="#1f12c7">
          <font>
@@ -108,8 +124,14 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="Combo1" layoutX="193.0" layoutY="326.0" prefHeight="25.0" prefWidth="86.0" promptText="Month" />
-      <ComboBox fx:id="Combo2" layoutX="284.0" layoutY="326.0" prefHeight="25.0" prefWidth="86.0" promptText="Year" />
+      <ComboBox fx:id="Combo1" layoutX="193.0" layoutY="326.0" prefHeight="25.0" prefWidth="86.0" promptText="Month">
+         <effect>
+            <InnerShadow />
+         </effect></ComboBox>
+      <ComboBox fx:id="Combo2" layoutX="284.0" layoutY="326.0" prefHeight="25.0" prefWidth="86.0" promptText="Year">
+         <effect>
+            <InnerShadow />
+         </effect></ComboBox>
       <Label fx:id="IncorrectLabel1" layoutX="209.0" layoutY="243.0" prefHeight="19.0" prefWidth="150.0" text="All fields must be filled in." textFill="#eb0f0f" visible="false">
          <font>
             <Font name="Kohinoor Telugu" size="12.0" />

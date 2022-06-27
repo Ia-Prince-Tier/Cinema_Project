@@ -1,37 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="496.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cinema_project.HomePageController">
     <children>
-        <Label fx:id="label" layoutX="218.0" layoutY="80.0" minHeight="16" minWidth="69" prefHeight="46.0" prefWidth="243.0" text="Who are you ?" textAlignment="CENTER">
+        <Label fx:id="label" layoutX="149.0" layoutY="22.0" minHeight="16" minWidth="69" prefHeight="35.0" prefWidth="356.0" text="Welcome to our movie ticket booking app." textAlignment="CENTER" textFill="#e08f19">
          <font>
-            <Font size="36.0" />
-         </font></Label>
-      <RadioButton fx:id="RadioB1" layoutX="62.0" layoutY="212.0" mnemonicParsing="false" text="Guest">
+            <Font name="Kohinoor Telugu" size="18.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></Label>
+      <RadioButton fx:id="RadioB1" layoutX="68.0" layoutY="293.0" mnemonicParsing="false" text="Guest" textFill="#e3c71b">
          <toggleGroup>
             <ToggleGroup fx:id="ToggleGroup" />
          </toggleGroup>
          <font>
+            <Font name="Kohinoor Telugu" size="24.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </RadioButton>
+      <RadioButton fx:id="RadioB2" layoutX="261.0" layoutY="293.0" mnemonicParsing="false" text="Member" textFill="#e3c71b" toggleGroup="$ToggleGroup">
+         <font>
+            <Font name="Kohinoor Telugu" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></RadioButton>
+      <RadioButton fx:id="RadioB3" layoutX="457.0" layoutY="293.0" mnemonicParsing="false" text="Employee" textFill="#e3c71b" toggleGroup="$ToggleGroup">
+         <font>
+            <Font name="Kohinoor Telugu" size="24.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></RadioButton>
+      <Button fx:id="button" layoutX="231.0" layoutY="382.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="22.0" prefWidth="191.0" text="Confirm">
+         <font>
             <Font size="24.0" />
          </font>
-      </RadioButton>
-      <RadioButton fx:id="RadioB2" layoutX="257.0" layoutY="212.0" mnemonicParsing="false" text="Member" toggleGroup="$ToggleGroup">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <ImageView fitHeight="150.0" fitWidth="469.0" layoutX="91.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageview1" fitHeight="190.0" fitWidth="200.0" layoutX="121.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageview2" fitHeight="190.0" fitWidth="200.0" layoutX="342.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="235.0" layoutY="57.0" prefHeight="19.0" prefWidth="181.0" text="Coming soon to your cinema..." textFill="#d0bc26">
          <font>
-            <Font size="24.0" />
-         </font></RadioButton>
-      <RadioButton fx:id="RadioB3" layoutX="461.0" layoutY="212.0" mnemonicParsing="false" text="Employee" toggleGroup="$ToggleGroup">
-         <font>
-            <Font size="24.0" />
-         </font></RadioButton>
-      <Button fx:id="button" layoutX="230.0" layoutY="384.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="22.0" prefWidth="191.0" text="Confirm">
-         <font>
-            <Font size="24.0" />
-         </font></Button>
+            <Font name="Kohinoor Telugu" size="13.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Label>
     </children>
 </AnchorPane>

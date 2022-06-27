@@ -17,16 +17,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author laurentdavenne
- */
-public class PaymentController implements Initializable {
+
+public class MovieSessionSucessfullyDeletedPageController implements Initializable {
 
     @FXML
     private Button button;
-    
 
     @FXML
     void hundleButtonAction(ActionEvent event) throws IOException {
@@ -37,16 +32,15 @@ public class PaymentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }   
     
     private void loadScene() throws IOException {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeeMoviesPage.fxml"));
     Parent root1 =(Parent) loader.load();
-    HomePageController s3Controller = loader.getController();
+    EmployeeMoviesPageController s3Controller = loader.getController();
     Stage stage = new Stage();
     stage.setScene(new Scene(root1));
-    stage.setTitle("HomePage");
+    stage.setTitle("EmployeeMoviesPage");
     stage.show();
     }
-    
 }

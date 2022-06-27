@@ -169,7 +169,14 @@ public class DeleteMovieSessionPageController implements Initializable {
                         System.out.println(Combo1.getValue().substring(49));
  
                         int rs2=stmt.executeUpdate("delete from screensession Where Date='"+Combo1.getValue().substring(0, 10)+"' and Time='"+Combo1.getValue().substring(14, 22)+"' and IDmovie ='"+rs1.getInt(1)+"' and Idscreen ='"+Combo1.getValue().substring(49)+"' "); 
-                           
+                        
+                        stmt.executeUpdate("SET @autoid := 0");
+                        stmt.executeUpdate("UPDATE screensession SET ID = @autoid := (@autoid+1)");
+                        stmt.executeUpdate("ALTER TABLE screensession AUTO_INCREMENT = 1");
+                        
+                        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+                        loadScene();
+                        
                     }else{ 
                         
                         Combo1.setVisible(false);
@@ -202,6 +209,16 @@ public class DeleteMovieSessionPageController implements Initializable {
     stage.setScene(new Scene(root1));
     stage.setTitle("EmployeeMoviesPage");
     stage.show();
-    }   
+    }  
+    
+    private void loadScene() throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("MovieSessionSucessfullyDeletedPage.fxml"));
+    Parent root1 =(Parent) loader.load();
+    MovieSessionSucessfullyDeletedPageController s3Controller = loader.getController();
+    Stage stage = new Stage();
+    stage.setScene(new Scene(root1));
+    stage.setTitle("MovieSessionSucessfullyDeletedPage");
+    stage.show();
+    }
     
 }

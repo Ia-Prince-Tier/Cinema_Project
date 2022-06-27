@@ -127,6 +127,10 @@ public class CustomerMoviesPageController implements Initializable {
         this.price=price;
     }
     
+    public void DisplayHistory(){
+        historybutton.setVisible(true);
+    }
+    
     
     
     

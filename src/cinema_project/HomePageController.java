@@ -25,6 +25,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -47,11 +49,15 @@ public class HomePageController implements Initializable {
     private RadioButton RadioB2;
     @FXML
     private RadioButton RadioB3;
-
+    @FXML
+    private ImageView imageview1;
+    @FXML
+    private ImageView imageview2;
     
- @FXML
- 
-private void handleButtonAction(ActionEvent event) throws IOException {
+    
+    
+    @FXML
+    private void handleButtonAction(ActionEvent event) throws IOException {
        
     if(RadioB1.isSelected())
     loadScene();
@@ -61,12 +67,14 @@ private void handleButtonAction(ActionEvent event) throws IOException {
     loadScene3();
     else
     System.exit(0);
-    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
-        
-}
+    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();   
+    }
 
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Image image = new Image(getClass().getResourceAsStream("Avatar 2.png"));
+        imageview1.setImage(image);
+        Image image2 = new Image(getClass().getResourceAsStream("Thor 4.png"));
+        imageview2.setImage(image2);
     }  
     
     private void loadScene() throws IOException {

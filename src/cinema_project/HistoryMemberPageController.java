@@ -68,12 +68,21 @@ public class HistoryMemberPageController implements Initializable {
     @FXML
     private Button button1;
     
+    @FXML
+    private Button button2;
+    
     String membername;
     
     @FXML
     void hundleButtonAction(ActionEvent event) {
-        SQLHistory();
-        historique.setVisible(true);
+    SQLHistory();
+    historique.setVisible(true);
+    }
+    
+    @FXML
+    void hundleButtonAction2(ActionEvent event) throws IOException {
+    ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    loadScene();
     }
 
 
@@ -84,12 +93,11 @@ public class HistoryMemberPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //SQLHistory();
-        //historique.setVisible(true);
+
     }
 
-    public void /*ObservableList<History>*/ SQLHistory() {
-        //ObservableList<History> Datelisthistory = FXCollections.observableArrayList(); 
+    public void SQLHistory() {
+         
         Connection conn = null;
 
         try {
@@ -116,41 +124,7 @@ public class HistoryMemberPageController implements Initializable {
             while(rs.next()){
               historique.getItems().add(new History(rs.getString(1),rs.getString(2),rs.getString(3)));
             }
- /*           
-            if (rs.next()) {
-                int j = rs.getInt(1);
-                System.out.println(rs.getInt(1));
-                ResultSet rs0 = stmt.executeQuery("SELECT Title from historique where IDmember='"+j+"' ");
-                   
-                if (rs0.next()) {
-                    System.out.println(rs0.getString(1));
-                    String a = rs0.getString(1);
-                    ResultSet rs1 = stmt.executeQuery("SELECT Screensession from historique where IDmember='"+j+"' ");
 
-                    if (rs1.next()) {
-                        System.out.println(rs1.getString(1));
-                        String b = rs1.getString(1);
-                        ResultSet rs3 = stmt.executeQuery("SELECT Ticketnumber from historique where IDmember='"+j+"' ");
-
-                        if (rs3.next()) {
-                            System.out.println(a);
-                            System.out.println(b);
-                            System.out.println(rs3.getString(1));
-                            //ObservableList<History> Datelisthistory = FXCollections.observableArrayList(new History(a, b, rs3.getString(1)));
-                            //new History(a, b, rs3.getString(1)); 
-
-                            //historique.setEditable(true);
-                            Titlecolumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-                            Screensessioncolumn.setCellValueFactory(new PropertyValueFactory<>("screensession"));
-                            Ticketnumbercolumn.setCellValueFactory(new PropertyValueFactory<>("ticketnumber"));
-                            //historique.setItems(Datelisthistory);
-                            //historique.getColumns().addAll(Titlecolumn, Screensessioncolumn, Ticketnumbercolumn);
-                            historique.getItems().add(new History(a,b,rs3.getString(1)));
-                        }
-                    }
-                }
-            }
-*/
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -162,7 +136,18 @@ public class HistoryMemberPageController implements Initializable {
                 System.out.println(ex.getMessage());
             }
         }
-        //return Datelisthistory;
     }
 
+    private void loadScene() throws IOException {
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
+        Parent root =(Parent) loader.load(); 
+        HomePageController s3Controller = loader.getController();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("HomePage");
+        stage.show();
+    }
+     
+    
 }
